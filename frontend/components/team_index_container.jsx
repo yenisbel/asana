@@ -1,20 +1,20 @@
 import {connect} from "react-redux";
-import BenchIndex from "./bench_index"; 
-import {fetchBenches} from "../actions/bench_actions";
+import TeamIndex from "./team_index"; 
+import {fetchTeams} from "../actions/team_actions";
 
 const mapStateToProps = (state) => {
     return {
-        benches: state.entities.benches
+        teams: state.entities.teams
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchBenches: () => dispatch(fetchBenches())
+        fetchTeams: () => dispatch(fetchTeams())
     }
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(BenchIndex);
+  )(TeamIndex);

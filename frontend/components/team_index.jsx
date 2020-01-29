@@ -1,23 +1,20 @@
 import React from 'react';
-import { fetchBenches } from '../actions/bench_actions';
+import { fetchTeams } from '../actions/team_actions';
 
-class BenchIndex extends React.Component {
+class TeamIndex extends React.Component {
     componentDidMount() {
-    
-      this.props.fetchBenches()
+      this.props.fetchTeams()
     }
   
     render() {
-      
-      
-      const { benches } = this.props;   
-      if (benches === undefined) return <h1>No benches yet!</h1>
+      const { teams } = this.props;   
+      if (teams === undefined) return <h1>No teams yet!</h1>
 
       return (
           <div>
               <ul>
                   {
-                    Object.values(benches).map(b => (
+                    Object.values(teams).map(b => (
                             // <BItem/>
                         <li>{b.description}</li>
                         )
@@ -27,6 +24,6 @@ class BenchIndex extends React.Component {
           </div>
       )
     }
-  }
+}
 
-  export default BenchIndex;
+  export default TeamIndex;

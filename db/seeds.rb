@@ -8,7 +8,8 @@
 
 
 User.destroy_all
-# Bench.destroy_all
+Team.destroy_all
+TeamMember.destroy_all
 
 user1 = User.create(email: 'test1', password: 'password1', full_name: 'Cindy Loop')
 user2 = User.create(email: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
@@ -22,6 +23,9 @@ user3 = User.create(email: 'test3', password: 'password1', full_name: 'Steve Loo
 
 
 
-# bench1 = Bench.create(description: 'bench1', lat: 1.1, lng: 1.1)
-# bench2 = Bench.create(description: 'bench2', lat: 2.2, lng: 2.2)
-# bench3 = Bench.create(description: 'bench3', lat: 3.3, lng: 3.3)
+team1 = Team.create(name: 'team1', description: 'advisor team')
+team2 = Team.create(name: 'team2', description: 'call center')
+team3 = Team.create(name: 'team3', description: 'quality support')
+
+member1 = TeamMember.create(member_id: user1.id, team_id: team1.id)
+member2 = TeamMember.create(member_id: user2.id, team_id: team1.id)
