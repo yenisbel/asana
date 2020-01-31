@@ -10,6 +10,8 @@
 User.destroy_all
 Team.destroy_all
 TeamMember.destroy_all
+Project.destroy_all
+Task.destroy_all
 
 user1 = User.create(email: 'test1', password: 'password1', full_name: 'Cindy Loop')
 user2 = User.create(email: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
@@ -29,3 +31,7 @@ team3 = Team.create(name: 'team3', description: 'quality support')
 
 member1 = TeamMember.create(member_id: user1.id, team_id: team1.id)
 member2 = TeamMember.create(member_id: user2.id, team_id: team1.id)
+
+project1 = Project.create(name: 'project1', team_id: team1.id, description: 'project for advisor team')
+
+task1 = Task.create(title: 'task1', project_id: project1.id, author_id: user1.id, assignee_id: user2.id, description: 'seek speakers for advisor team conference')

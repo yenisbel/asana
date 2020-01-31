@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store';
 import Root from "./components/root";
-import { fetchTeams } from "./actions/team_actions";
+import { requestTeams } from "./actions/team_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");

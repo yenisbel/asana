@@ -6,7 +6,7 @@ export const fetchTeams = () => {
     });
 }
 
-export const fetchTeam = id => {
+export const fetchTeam = (id) => {
     return $.ajax({
         method: "GET",
         url: `api/teams/${id}`,
@@ -21,3 +21,17 @@ export const createTeam = (team) => {
     });
 }
 
+export const updateTeam = (team) => {
+    return $.ajax({
+      method: 'PATCH',
+      url: `api/teams/${team.id}`,
+      data: { team }
+    });
+};
+  
+export const deleteTeam = (id) => {
+    return $.ajax({
+      method: 'DELETE',
+      url: `api/teams/${id}`
+    });
+};

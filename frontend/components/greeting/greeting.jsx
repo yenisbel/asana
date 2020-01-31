@@ -6,7 +6,7 @@ const Greeting = (props) => {
     if (currentUser){
         return (
             <div>
-                <h2>Welcome, {currentUser.full_name}!</h2>
+                <h2>Welcome, { currentUser.full_name }!</h2>
                 <button type="submit" onClick={props.logout}>Logout</button>
             </div>
         )
