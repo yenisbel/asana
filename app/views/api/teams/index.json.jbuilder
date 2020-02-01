@@ -1,5 +1,5 @@
-@teams.each do |b|
-    json.set! b.id do
-        json.extract! b, :id, :name, :description
-    end 
+@teams.each do |team|
+  json.set! team.id do
+    json.extract! team, :id, :name, :project_ids, :member_ids
+  end
 end

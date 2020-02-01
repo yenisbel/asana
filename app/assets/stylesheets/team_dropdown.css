@@ -1,0 +1,57 @@
+ .layer-positioner-team{
+    align-items: flex-start;
+    display: flex;
+  }
+  
+  .teams-dropdown{
+    margin-left: 10px;
+    margin-right: -5px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 57px;
+    right: 30px;
+  }
+  
+  .dropdown-team{
+    background: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid #d5dce0;
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
+    font-size: 13px;
+  }
+  
+  .menu-team{
+    min-width: 215px;
+    padding: 5px 0;
+  }
+  
+  .team-button{
+    height: 40px;
+    align-items: center;
+    color: #151b26;
+    display: flex;
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    text-decoration: none;
+    list-style: none;
+  }
+  
+  .menu-separator{
+    border-top: 1px solid #e0e6e8;
+    margin: 5px 0;
+  }
+  
+  .team-button:hover{
+    background-color: #14aaf5;
+    color: white;
+  }
+  
+  .teams{
+    overflow-y: auto;
+    margin: -5px 0;
+    padding: 5px 0;
+  }
+  

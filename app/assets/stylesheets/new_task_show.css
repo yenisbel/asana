@@ -1,0 +1,62 @@
+.task-wrapper-none{
+  height: 0;
+  padding: 0;
+}
+
+.container-none{
+  height: 0;
+  background: transparent;
+  border: transparent;
+}
+
+.content-none{
+  height: 0;
+  padding: 0;
+}
+
+.properties-none{
+  height: 0;
+}
+
+.properties-title-none{
+  line-height: 0;
+}
+
+.new-task-form-none{
+  display: none;
+}
+
+.add-card:hover .plus-task{
+  color: #14aaf5;
+  cursor: pointer;
+}
+
+.plus-task{
+  height: 16px;
+  width: 16px;
+  color: #b7bfc6
+}
+
+.add-card:hover{
+  border: 2px solid #14aaf5;
+  cursor: pointer;
+}
+
+.new-task-form{
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 237px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.new-task-title{
+  border: none;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 100%;
+  height: auto;
+}

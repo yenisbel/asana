@@ -1,26 +1,27 @@
 class Api::SessionsController < ApplicationController
+  def create #includes teams
+    @user = User.includes(:projects).find_by_credentials(
+      params[:user][:username],
+      params[:user][:password]
+    )
+    
+    if @user
+      @team = @user.teams.first
+      log_in(@user)
+      render 'api/users/show'
+    else
+      render json: ['The combination credentials is not correct'], status: 401
+    end
+  end
 
-    def create 
-        p params
-        @user = User.find_by_credentials(
-            params[:user][:email], 
-            params[:user][:password]
-        )
-        if @user
-            login(@user)
-            render json: @user
-        else
-            render json: ["Wrong email/password"], status: 401
-        end 
-    end  
-
-    def destroy  
-        if current_user
-            logout
-            render json: {}
-        else  
-            render json: ["No user found"], status: 404
-        end 
-    end 
-
-end 
+  def destroy
+    @user = current_user
+    @team = @user.teams.first
+    if @user
+      logout
+      render 'api/users/show'
+    else
+      render json: ['Nobody is signed in'], status: 404
+    end
+  end
+end
