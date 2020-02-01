@@ -11,7 +11,8 @@ User.destroy_all
 Team.destroy_all
 Membership.destroy_all
 Project.destroy_all
-# Task.destroy_all
+Task.destroy_all
+Column.destroy_all
 
 user1 = User.create(username: 'test1', password: 'password1', full_name: 'Cindy Loop')
 user2 = User.create(username: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
@@ -36,4 +37,11 @@ member3 = Membership.create(member_id: user1.id, team_id: team2.id)
 project1 = Project.create(name: 'project1', team_id: team2.id, description: 'project1 for advisor team')
 project2 = Project.create(name: 'project2', team_id: team2.id, description: 'project2 for advisor team')
 
-# task1 = Task.create(title: 'task1', project_id: project1.id, author_id: user1.id, assignee_id: user2.id, description: 'seek speakers for advisor team conference')
+column1 = Column.create(name: 'column1', project_id: project1.id)
+column2 = Column.create(name: 'column2', project_id: project1.id)
+column3 = Column.create(name: 'column3', project_id: project2.id)
+
+
+task1 = Task.create(title: 'task1', project_id: project1.id, author_id: user1.id, column_id: column1.id , description: 'seek speakers for advisor team conference')
+task2 = Task.create(title: 'task2', project_id: project1.id, author_id: user1.id, column_id: column2.id , description: 'seek speakers for IT team conference')
+task3 = Task.create(title: 'task3', project_id: project2.id, author_id: user2.id, column_id: column1.id , description: 'seek speakers for Invesment Fundraiser event')

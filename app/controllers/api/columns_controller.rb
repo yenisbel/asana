@@ -20,10 +20,13 @@ class Api::ColumnsController < ApplicationController
     end
   end
 
-  def destroy
-
+  def show
     @column = Column.find(params[:id])
+    render :show
+  end
 
+  def destroy
+    @column = Column.find(params[:id])
     @column.destroy
     render :show
   end
