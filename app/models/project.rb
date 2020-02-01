@@ -1,11 +1,29 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :bigint(8)        not null, primary key
+#  name        :string           not null
+#  description :text             not null
+#  team_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  color       :string
+#
+
 class Project < ApplicationRecord
-    validates :name, :team_id, :description, presence: true
-    validates :team_id, uniqueness: true
-    belongs_to :team
+  validates :name, presence: true, uniqueness: true
+  validates :description, :team_id, presence: true
 
-    has_many :tasks,
-        class_name: 'Task',
-        foreign_key: :project_id
+  # team id will serve as user id for now
+  belongs_to :team
 
-    
+
+  has_many :columns,
+    dependent: :destroy
+
+  has_many :tasks,
+    through: :columns,
+    source: :tasks,
+    dependent: :destroy
 end

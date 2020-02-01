@@ -1,58 +1,57 @@
-import * as TeamAPIUtil from "../util/team_api_util";
+import * as TeamAPIUtil from '../util/team_api_util';
 
-export const RECEIVE_TEAMS = 'RECEIVE_TEAMS';
+export const RECEIVE_ALL_TEAMS = 'RECEIVE_ALL_TEAMS';
 export const RECEIVE_TEAM = 'RECEIVE_TEAM';
 export const REMOVE_TEAM = 'REMOVE_TEAM';
 
-
-const receiveTeams = teams => {
-    return {
-        type: RECEIVE_TEAMS,
-        teams
-    }
+export const receiveTeam = (payload) => {
+  return {
+    type: RECEIVE_TEAM,
+    payload
+  };
 };
 
-const receiveTeam = (payload) => {
-    return {
-        type: RECEIVE_TEAM,
-        payload
-    };
+export const receiveAllTeams = teams => {
+  return {
+    type: RECEIVE_ALL_TEAMS,
+    teams
+  };
 };
 
-const removeTeam = teamId => {
-    return {
-        type: REMOVE_TEAM,
-        teamId
-    };
+export const removeTeam = teamId => {
+  return {
+    type: REMOVE_TEAM,
+    teamId
+  };
 };
 
-export const requestTeams = ()=> dispatch => (
-    TeamAPIUtil.fetchTeams().then(teams => dispatch(receiveTeams(teams)))
-);
+export const requestAllTeams = () => dispatch => {
+  return TeamAPIUtil.fetchAllTeams().then(teams => (
+    dispatch(receiveAllTeams(teams))
+  ));
+};
 
-export const requestTeam = (id)=> dispatch => (
-    TeamAPIUtil.fetchTeam(id).then(payload => dispatch(receiveTeam(payload)))
-);
+export const requestTeam = id => dispatch => {
 
-export const createTeam = (team)=> dispatch => (
-    TeamAPIUtil.createTeam(team).then(team => dispatch(receiveTeam(team)))
-);
+  return TeamAPIUtil.fetchTeam(id).then(payload => {
+    return dispatch(receiveTeam(payload));
+  });
+};
 
-export const updateTeam = (team) => dispatch => (
-    TeamAPIUtil.updateTeam(team).then(team => dispatch(receiveTeam(team)))
-);
+export const createTeam = team => dispatch => {
+  return TeamAPIUtil.createTeam(team).then(team => {
+    return dispatch(receiveTeam(team));
+  });
+};
 
-  
-// export const deleteTeam = (id) => dispatch => (
-//     TeamAPIUtil.deleteTeam(id).then(team => (dispatch(removeTeam(id)))
-// )
+export const updateTeam = team => dispatch => {
+  return TeamAPIUtil.updateTeam(team).then(team => {
+    return dispatch(receiveTeam(team));
+  });
+};
 
 export const deleteTeam = teamId => dispatch => {
-    return TeamAPIUtil.deleteTeam(teamId).then(team => (
-      dispatch(removeTeam(teamId))
-    ));
+  return TeamAPIUtil.deleteTeam(teamId).then(team => (
+    dispatch(removeTeam(teamId))
+  ));
 };
-
-window.requestTeams = requestTeams;
-window.requestTeam = requestTeam;
-window.createTeam = createTeam;

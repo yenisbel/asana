@@ -2,15 +2,7 @@ import * as TaskAPIUtil from '../util/task_api_util';
 
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const REMOVE_TASK = 'REMOVE_TASK';
-export const RECEIVE_TASKS = 'RECEIVE_TASKS';
-
-
-export const receiveTasks = tasks => {
-    return {
-      type: RECEIVE_ALL_TASKS,
-      tasks
-    };
-};
+export const RECEIVE_ALL_TASKS = 'RECEIVE_ALL_TASKS';
 
 export const receiveTask = payload => {
   return {
@@ -26,39 +18,43 @@ export const removeTask = payload => {
   };
 };
 
+export const receiveTasks = tasks => {
 
+  return {
+    type: RECEIVE_ALL_TASKS,
+    tasks
+  };
+};
 
-export const requestTasks = (teamId, projectId) => {
+export const requestAllTasks = (teamId, projectId, columnId) => {
 
-  return TaskAPIUtil.fetchTasks(teamId, projectId).then(tasks => {
+  return TaskAPIUtil.fetchProjectTasks(teamId, projectId, columnId).then(tasks => {
 
     return dispatch(receiveTasks(tasks));
   });
 };
 
-// change to requestTask
-export const fetchTask = (teamId, projectId, id) => dispatch => {
-    return TaskAPIUtil.fetchTask(teamId, projectId, id).then(res => (
-      dispatch(receiveTask(res))
-    ));
-};
+export const createTask = (task, columnId, projectId, teamId) => dispatch => {
 
-export const createTask = (task, teamId, projectId) => dispatch => {
-
-  return TaskAPIUtil.createTask(task, teamId, projectId).then(res => (
+  return TaskAPIUtil.createTask(task, columnId, projectId, teamId).then(res => (
     dispatch(receiveTask(res))
   ));
 };
 
-export const updateTask = (task, teamId, projectId) => dispatch => {
-  return TaskAPIUtil.updateTask(task, teamId, projectId).then(res => (
+export const updateTask = (task, columnId, projectId, teamId) => dispatch => {
+  return TaskAPIUtil.updateTask(task, columnId, projectId, teamId).then(res => (
     dispatch(receiveTask(res))
   ));
 };
 
-export const deleteTask = (teamId, projectId, id) => dispatch => {
-  return TaskAPIUtil.deleteTask(teamId, projectId, id).then(res => (
+export const deleteTask = (taskId, columnId, projectId, teamId) => dispatch => {
+  return TaskAPIUtil.deleteTask(taskId, columnId, projectId, teamId).then(res => (
     dispatch(removeTask(res))
   ));
 };
 
+export const fetchTask = (taskId, columnId, projectId, teamId) => dispatch => {
+  return TaskAPIUtil.fetchTask(taskId, columnId, projectId, teamId).then(res => (
+    dispatch(receiveTask(res))
+  ));
+};

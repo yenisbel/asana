@@ -1,22 +1,25 @@
 import * as ProjectAPIUtil from '../util/project_api_util';
 
-export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
+export const RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveProjects = (projects) => {
+
   return {
-    type: RECEIVE_PROJECTS,
+    type: RECEIVE_ALL_PROJECTS,
     projects
   };
 };
 
-export const receiveProject = ({project, tasks}) => {
+export const receiveProject = ({project, columns, tasks}) => {
+
   return {
     type: RECEIVE_PROJECT,
     project,
+    columns,
     tasks
   };
 };
@@ -42,35 +45,40 @@ export const removeErrors = () => {
   };
 };
 
-export const requestProjects = (teamId) => dispatch => {
+export const requestAllProjects = (teamId) => dispatch => {
 
-  return ProjectAPIUtil.fetchProjects(teamId).then(projects => (
+  return ProjectAPIUtil.fetchAllProjects(teamId).then(projects => (
     dispatch(receiveProjects(projects))
   ));
 };
 
-export const requestProject = (teamId, id) => dispatch => {
+export const requestProject = (id, teamId) => dispatch => {
 
-  return ProjectAPIUtil.fetchProject(teamId, id).then(payload => {
+  return ProjectAPIUtil.fetchSingleProject(id, teamId).then(payload => {
+
     return dispatch(receiveProject(payload));
   }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
-export const createProject = (teamId, project) => dispatch => {
-  return ProjectAPIUtil.createProject(teamId, project).then(payload => {
+export const createProject = (project, teamId) => dispatch => {
+
+  return ProjectAPIUtil.createProject(project, teamId).then(payload => {
+
     return dispatch(receiveProject(payload));
   }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
-export const updateProject = (teamId, project) => dispatch => {
-  return ProjectAPIUtil.updateProject(teamId, project).then(payload => {
+export const updateProject = (project, teamId) => dispatch => {
+  return ProjectAPIUtil.updateProject(project, teamId).then(payload => {
+
     return dispatch(receiveProject(payload));
   }, err => {
+
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
 
-export const deleteProject = (teamId, id) => dispatch => {
-  return ProjectAPIUtil.deleteProject(teamId, id).then(project => (
-    dispatch(removeProject(teamId, id))));
+export const deleteProject = (projectId, teamId) => dispatch => {
+  return ProjectAPIUtil.deleteProject(projectId, teamId).then(project => (
+    dispatch(removeProject(projectId, teamId))));
 };

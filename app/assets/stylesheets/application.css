@@ -45,11 +45,20 @@
     color: black;
   } */
 
+  .logo {
+    width: 111px;
+    height: 22px;
+    font-weight: bolder;
+    vertical-align: middle;
+    background: none;
+    color: rgb(103, 182, 235);
+  }
   .login-signup {
     display: flex;
     justify-content: flex-end;
     padding: 10px;
   }
+
   
   .header-signup, .header-login {
     border: 2px solid rgb(235, 103, 103);
@@ -86,6 +95,13 @@
     width: 100px;
     height: 40px;
     margin-left: 10px;
+  }
+
+  .trial {
+    background-color: rgb(235, 103, 103);
+    color: white;
+    height: 50px;
+    transition: background-color, .15s,color .15s ease-in-out; 
   }
   
   body {

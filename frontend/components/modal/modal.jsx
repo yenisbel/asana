@@ -1,10 +1,13 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import LoginForm from '../session/login_form_container';
-import SignupForm from '../session/signup_form_container';
-import CreateTeamContainer from '../teams/create_team_container';
-import EditTeamContainer from '../teams/edit_team_container';
+import LogInFormContainer from '../session_form/login_form_container';
+import SignUpFormContainer from '../session_form/signup_form_container';
+import CreateProjectFormContainer from '../projects/create_edit_project/create_project_form_container';
+import EditProjectFormContainer from '../projects/create_edit_project/edit_project_form_container';
+import TaskFormContainer from '../tasks/edit_task/edit_task_container';
+import CreateTeamFormContainer from '../teams/create_edit/create_team_container';
+import UpdateTeamFormContainer from '../teams/create_edit/edit_team_container';
 
 const Modal = ({ modal, closeModal }) => {
 
@@ -14,16 +17,25 @@ const Modal = ({ modal, closeModal }) => {
   let component;
   switch (modal) {
     case 'Log In':
-      component = <LoginForm />;
+      component = <LogInFormContainer />;
       break;
     case 'Sign Up':
-      component = <SignupForm />;
+      component = <SignUpFormContainer />;
+      break;
+    case 'Create Project':
+      component = <CreateProjectFormContainer />;
+      break;
+    case 'Update Project':
+      component = <EditProjectFormContainer />;
+      break;
+    case 'Task Modal':
+      component = <TaskFormContainer />;
       break;
     case 'Create Team':
-      component = <CreateTeamContainer />;
+      component = <CreateTeamFormContainer />;
       break;
     case 'Update Team':
-      component = <EditTeamContainer />;
+      component = <UpdateTeamFormContainer />;
       break;
     default:
       return null;
@@ -43,16 +55,16 @@ const Modal = ({ modal, closeModal }) => {
   );
 }
 
-const mapStateToProps = state => {
+const msp = state => {
   return {
     modal: state.ui.modal
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mdp = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(msp, mdp)(Modal);

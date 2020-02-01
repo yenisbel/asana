@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :teams do
+      resources :members
       resources :projects do
-        resources :tasks
+        resources :columns do
+          resources :tasks
+        end       
       end
     end
     

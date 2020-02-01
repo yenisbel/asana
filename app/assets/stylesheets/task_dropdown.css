@@ -1,0 +1,39 @@
+.dropdown-delete {
+  background: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid #d5dce0;
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
+  font-size: 13px;
+}
+
+.task-dropdown{
+  margin-left: 10px;
+  margin-right: -5px;
+  padding: 2px 5px;
+  position: relative;
+}
+
+.layer-positioner-task{
+  top: 17px;
+  left: -20px;
+  position: absolute;
+  z-index: 100;
+  align-items: flex-start;
+  display: flex;
+}
+
+.task-menu {
+  min-width: 215px;
+  padding: 5px 0;
+}
+
+.delete-task{
+  height: 30px;
+  align-items: center;
+  color: #151b26;
+  display: flex;
+  padding: 0 10px;
+  position: relative;
+  cursor: pointer;
+}

@@ -1,47 +1,50 @@
 class Api::ProjectsController < ApplicationController
-    # before_action :require_logged_in
-    def index 
-        # @projects = current_user.projects 
-        @projects = Project.all
-        render :index
-    end 
+  before_action :require_logged_in
 
-    def create 
-        @project = Project.new(project_params)
-        @project.team_id = params[:team_id]
-        if @project.save
-            render :show
-        else
-            render json: @project.errors.full_messages
-        end
-    end 
+  def create
+    @project = Project.new(project_params)
 
-    def show
-        @project = Project.find(params[:id])
-        if @project
-            render :show
-        else
-            render json: "None team was found", status: 422
-        end
+    @project.team_id = params[:team_id]
+   
+    if @project.save
+      render :show
+    else
+      render json: @project.errors.full_messages, status: 422
     end
+  end
 
-    def update 
-        @project = Project.find(params[:id])
-        if @project.update(project_params)
-            render :show
-        else
-            render json: @project.errors.full_messages
-        end
-    end 
-
-    def destroy
-        @project = Project.find(params[:id])
-        @project.destroy
-        render json: {id: @project.id}
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      render :show
+    else
+      render json: @project.errors.full_messages, status: 422
     end
+  end
 
-    private
-    def project_params
-        params.require(:project).permit(:name, :description)
-    end 
+  def show
+
+    @project = Project.includes(columns: [:tasks]).find(params[:id])
+    
+    render :show
+  end
+
+  def index
+    @projects = current_team.projects.includes(columns: [:tasks])
+    render :index
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.team_id == current_team.id
+      @project.destroy
+      render json: {id: @project.id}
+    end
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:description, :name)
+  end
 end

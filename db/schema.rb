@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_202558) do
+ActiveRecord::Schema.define(version: 2020_01_31_150021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "columns", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.integer "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id", "team_id"], name: "index_memberships_on_member_id_and_team_id", unique: true
+    t.index ["member_id"], name: "index_memberships_on_member_id"
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -21,7 +38,6 @@ ActiveRecord::Schema.define(version: 2020_01_29_202558) do
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_projects_on_team_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -34,16 +50,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_202558) do
     t.integer "assignee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "team_members", force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.integer "member_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id", "team_id"], name: "index_team_members_on_member_id_and_team_id", unique: true
-    t.index ["member_id"], name: "index_team_members_on_member_id"
-    t.index ["team_id"], name: "index_team_members_on_team_id"
+    t.integer "column_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -51,19 +58,19 @@ ActiveRecord::Schema.define(version: 2020_01_29_202558) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_teams_on_name", unique: true
+    t.index ["name"], name: "index_teams_on_name"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "full_name"
     t.string "photo_url"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

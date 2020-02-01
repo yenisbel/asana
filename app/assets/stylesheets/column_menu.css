@@ -1,0 +1,39 @@
+.layer-positioner{
+  /* top: 133px; */
+  left: 60px;
+  position: absolute;
+  z-index: 15;
+  align-items: flex-start;
+  display: flex;
+}
+
+.layer{
+  position: relative;
+}
+
+.dropdown-edit-delete{
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #d5dce0;
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
+  box-sizing: border-box;
+}
+
+.column-menu{
+  padding: 5px 0;
+  min-width: 215px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column-menu-item{
+  height: 30px;
+  align-items: center;
+  padding: 0 10px;
+  display: flex;
+}
+
+.column-menu-item-label{
+  font-size: 13px;
+  color: inherit;
+}

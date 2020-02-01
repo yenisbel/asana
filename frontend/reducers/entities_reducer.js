@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
-import usersReducer from './users_reducer';
-import teamsReducer from './teams_reducer';
-import projectsReducer from './projects_reducer';
-import TasksReducer from './tasks_reducer';
-import MembersReducer from './members_reducer';
+import users from './users_reducer';
+import projects from './project_reducer';
+import columns from './column_reducer';
+import tasks from './task_reducer';
+import teams from './team_reducer';
+import members from './members_reducer'
 
-const entitiesReducer = combineReducers({
-    users: usersReducer,
-    teams: teamsReducer,
-    projects: projectsReducer,
-    tasks: TasksReducer,
-    members: MembersReducer
+export default combineReducers({
+  users,
+  teams,
+  projects,
+  columns,
+  tasks,
+  members
 });
-
-export default entitiesReducer
