@@ -15,8 +15,12 @@ class Api::MembersController < ApplicationController
         end
     end
 
-    # def create
-    # end
+    def create
+        @member = User.find_by(username: params[:member][:username])
+        current_team.members << @member
+        current_team.save
+        render :show
+    end
 
     def show     
         @member = User.find(params[:id])      

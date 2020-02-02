@@ -5,6 +5,7 @@ import LogInFormContainer from '../session_form/login_form_container';
 import SignUpFormContainer from '../session_form/signup_form_container';
 import CreateProjectFormContainer from '../projects/create_edit_project/create_project_form_container';
 import EditProjectFormContainer from '../projects/create_edit_project/edit_project_form_container';
+import CreateMemberFormContainer from '../members/create_edit_member/create_member_form_container';
 import TaskFormContainer from '../tasks/edit_task/edit_task_container';
 import CreateTeamFormContainer from '../teams/create_edit/create_team_container';
 import UpdateTeamFormContainer from '../teams/create_edit/edit_team_container';
@@ -28,6 +29,9 @@ const Modal = ({ modal, closeModal }) => {
     case 'Update Project':
       component = <EditProjectFormContainer />;
       break;
+    case 'Create Member':
+      component = <CreateMemberFormContainer />;
+        break;
     case 'Task Modal':
       component = <TaskFormContainer />;
       break;

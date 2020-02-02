@@ -6,7 +6,6 @@ class Api::TasksController < ApplicationController
     @task.project_id = params[:project_id]
     @task.column_id = params[:column_id]
     @task.author_id = current_user.id
-    # debugger
     if @task.save
       render :show
     else
