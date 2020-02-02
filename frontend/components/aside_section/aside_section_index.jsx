@@ -9,9 +9,7 @@ class AsideSectionProjectIndex extends React.Component {
 
   componentDidMount(){
     const { teamId, requestTeam, requestAllProjects, requestAllMembers } = this.props;
-
     requestTeam(teamId);
-    // requestAllProjects(teamId);
   }
 
   componentDidUpdate(prevProps){
@@ -39,9 +37,9 @@ class AsideSectionProjectIndex extends React.Component {
         <section className="aside-project-index" >
           <div className="aside-top">
             <Link to={`/teams/${teamId}`} className="logo">
-              <h1>Home1</h1>
+              <h1>Dashboard</h1>
             </Link>
-            <button className="closebtn" onClick={this.props.closeNav}> &#60; &#9776;</button>
+            <button className="closebtn" onClick={this.props.closeNav}> &#9776;</button>
           </div>
           <section className="aside-projects-members">
             <label className="team-header">
@@ -51,11 +49,16 @@ class AsideSectionProjectIndex extends React.Component {
             </label>
             <section className="members-projects-section">
               <div className="aside-members">
-                <label>
+                <label className="projects-members-label">
                   Members
                 </label>
                 <ul className="team-members-list">
                   {members.map((member, i) => (
+                    <li className="team-member" key={`member-${i}`}>
+                      {member.username}
+                    </li>
+                  ))}
+                  {/* {members.map((member, i) => (
                     <Link to={`/teams/${teamId}/members/${member.id}`} key={`member-${i}`} className="link-project-aside">
                        <li className="aside-project">
                           <svg className="li-square" style={{ backgroundColor: `#pink`}}></svg>
@@ -63,11 +66,7 @@ class AsideSectionProjectIndex extends React.Component {
                       </li>
 
                     </Link>
-
-                    // <li className="team-member" key={`member-${i}`}>
-                    //   {member.username}
-                    // </li>
-                  ))}
+                  ))} */}
                 </ul>
               </div>
               <div className="aside-projects">
@@ -78,7 +77,7 @@ class AsideSectionProjectIndex extends React.Component {
                   {projects.map((project, i)=> (
                     <Link to={`/teams/${teamId}/projects/${project.id}`} key={`project-${i}`} className="link-project-aside">
                       <li className="aside-project">
-                        <svg className="li-square" style={{ backgroundColor: `#${project.color}`}}></svg>
+                        <svg className="li-square" style={{ backgroundColor: `#blue`}}></svg>
                         {project.name}
                       </li>
                     </Link>

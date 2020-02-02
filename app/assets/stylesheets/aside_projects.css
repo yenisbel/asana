@@ -107,16 +107,16 @@
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 16px;
+  font-size: 23px;
   margin-left: 50px;
   color: #9CA6AE;
-  background-color: #151b26;
-  height: 16px;
+  background-color:  rgb(230, 122, 122);
+  height: 20px;
 
 }
 
 .closebtn:hover{
-  background-color: #151b26;
+  /* background-color: #151b26; */
   color: white;
 }
 

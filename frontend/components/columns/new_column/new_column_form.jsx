@@ -52,7 +52,7 @@ class NewColumn extends React.Component {
               <input type="text" className="new-column-name"
                 onChange={this.update()}
                 value={this.state.name}
-                placeholder="New Column"
+                placeholder="New Category"
                 autoFocus></input>
             </form>
           </div>
