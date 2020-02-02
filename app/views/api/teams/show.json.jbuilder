@@ -3,10 +3,11 @@ json.team do
 end
 
 # team has members through memberships assoc
-@team.memberships.each do |member|
+@team.members.each do |member|
   json.members do
     json.set! member.id do
-      json.extract! member, :id, :member_id, :team_id
+      json.team_id current_team.id
+      json.extract! member, :id, :username
     end
   end
 end

@@ -3,6 +3,7 @@ class Api::TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.project_id = params[:project_id]
     @task.column_id = params[:column_id]
     @task.author_id = current_user.id
     if @task.save
@@ -40,6 +41,6 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :completed)
+    params.require(:task).permit(:title, :description, :due_on, :completed)
   end
 end

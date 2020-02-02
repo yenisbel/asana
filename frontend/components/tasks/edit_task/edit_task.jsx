@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-// import DatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 // import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
 
 
@@ -159,7 +159,7 @@ class TaskForm extends React.Component {
                           onChange={this.handleDateChange}
                           dateFormat="MMMM d, yyyy"
                           className="date-picker"
-                          placeholderText="Due Date"
+                          placeholderText="Due On"
                           minDate={new Date()}
                           showDisabledMonthNavigation
                           ></DatePicker>

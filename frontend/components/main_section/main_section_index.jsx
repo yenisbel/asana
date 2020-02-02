@@ -66,7 +66,7 @@ class MainSectionProjectIndex extends React.Component {
                   teamId={teamId}/>
                 ))}
               <button className="project-index-item new-project" onClick={() => {
-                  openModal('Add Member');
+                  openModal('Create Member');
                 }}>
                 <div className="tile-structure">
                   <div className="tile-s-child">

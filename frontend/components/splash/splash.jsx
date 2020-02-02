@@ -11,15 +11,14 @@ class Splash extends React.Component {
 
   renderHeader(){
 
-    const { currentProject, teamName } = this.props;
+    const { currentProject, teamId } = this.props;
     if (currentProject){
       return (<h1>{currentProject.name}</h1>);
     } else {
       return (
-      <h1 className="header-link-greeting">{teamName}</h1>
-        // <Link to={`/teams/${teamId}`} className="header-link-greeting">
-        //   <h1>Home</h1>
-        // </Link>
+        <Link to={`/teams/${teamId}`} className="header-link-greeting">
+          <h1>Home</h1>
+        </Link>
       );
     }
   }

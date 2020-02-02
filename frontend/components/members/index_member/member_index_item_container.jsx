@@ -9,10 +9,6 @@ const MemberIndexItem  = ({ teamId, member, openModal, deleteMember }) => {
         <div className="tile-s-child">
           <div className="tile" style={{ backgroundColor: `#pink` }}>
             <div className="card"></div>
-            <button className="body-edit" onClick={(e) => {
-                e.preventDefault();
-                openModal('Update Member', member.id)
-              }}>Edit</button>
             <button className="body-delete" onClick={(e) => {
                 e.preventDefault();
                 deleteMember(member.id, teamId);

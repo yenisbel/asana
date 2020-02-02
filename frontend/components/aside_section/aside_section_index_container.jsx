@@ -4,7 +4,7 @@ import { requestAllTasks } from '../../actions/task_actions';
 import { requestAllColumns } from '../../actions/column_actions';
 import AsideSectionProjectIndex from './aside_section_index';
 import { requestAllProjects, requestProject } from '../../actions/project_actions';
-import { requestAllMembers } from '../../actions/member_actions';
+import { requestAllMembers, requestMember } from '../../actions/member_actions';
 import { openModal } from '../../actions/modal_actions';
 import { closeNav, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown } from '../../actions/ui_actions';
 import { requestAllTeams, requestTeam } from '../../actions/team_actions';
@@ -30,6 +30,7 @@ const msp = (state, {match, location}) => {
     teams: Object.values(state.entities.teams),
     teamId,
     projectId,
+    // memberId,
     columnId,
     firstProject: Object.values(state.entities.projects)[0],
     teamName: state.entities.teams[teamId] ? state.entities.teams[teamId].name : ''
@@ -50,6 +51,7 @@ const mdp = dispatch => {
     requestAllTeams: () => dispatch(requestAllTeams()),
     requestAllTasks: (teamId, projectId, columnId) => dispatch(requestAllTasks(teamId, projectId, columnId)),
     requestProject: (projectId, teamId) => dispatch(requestProject(projectId, teamId)),
+    // requestMember: (memberId, teamId) => dispatch(requestMember(memberId, teamId)),
     requestTeam: (teamId) => dispatch(requestTeam(teamId)),
     closeTeamDropdown: () => dispatch(closeTeamDropdown())
   };

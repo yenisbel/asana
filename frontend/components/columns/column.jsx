@@ -1,5 +1,4 @@
 import React from 'react';
-import merge from 'lodash/merge';
 import Task from '../tasks/task_container.jsx';
 import NewTask from '../tasks/new_task/new_task_simple_container';
 
