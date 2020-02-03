@@ -1,29 +1,16 @@
 
 .aside-project-index {
-  /* background-color: #151b26; */
   display: flex;
   flex-direction: column;
   position: relative;
   padding-top: 60px;
 }
 
-/* .aside-projects {
-  position: relative;
-} */
 
 .aside-projects-list {
-  /* color: #d5dce0;
-  font-weight: 400; */
   align-items: center;
 }
 
-/* .aside-projects{
-  display: flex;
-  flex-direction: column;
-  margin: 5px 10px 5px 15px;
-  color: #d5dce0;
-  font-size: 13px;
-} */
 
 .aside-project {
   align-items: center;
@@ -75,6 +62,9 @@
 .team-member{
   margin-bottom: 10px;
   margin-left: 10px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #d5dce0;
 }
 .aside-members, .aside-projects{
   display: flex;
@@ -83,7 +73,10 @@
   color: white;
   font-weight: bolder;
   font-size: 15px;
+}
 
+.aside-projects-header, .aside-members-header {
+  margin-bottom: 10px;
 }
 
 .aside-index{
@@ -97,9 +90,8 @@
   top: 0;
   left: 0;
   overflow-x: hidden;
-  background-color: rgb(230, 122, 122);
-  /* background-color: #151b26; */
-  /* padding-top: 60px; */
+  background-color:  rgb(230, 122, 122);
+  padding-top: 10px;
   transition: 0.5s;
 }
 
@@ -116,7 +108,6 @@
 }
 
 .closebtn:hover{
-  /* background-color: #151b26; */
   color: white;
 }
 
@@ -126,18 +117,10 @@
   text-decoration: none;
 }
 
-.aside-project:active {
-  background-color: #3B3F49;
-}
-
-.aside-project:hover{
-  background-color: #363B49;
-}
-
 .li-square {
   height: 10px;
   width: 10px;
-  background-color: aliceblue;
+  background-color: rgb(103, 182, 235);
   margin-right: 10px;
   border-radius: 3px;
 }

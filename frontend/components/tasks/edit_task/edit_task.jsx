@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-// import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
-
+import DatePicker from "react-datepicker";
+import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
+// import "react-datepicker/dist/react-datepicker.css";
 
 class TaskForm extends React.Component {
   constructor(props){
@@ -18,8 +18,6 @@ class TaskForm extends React.Component {
     this.update = this.update.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.handleDateChange =this.handleDateChange.bind(this);
-    // this.setDateButton = this.setDateButton.bind(this);
-    // this.setDueDate = this.setDueDate.bind(this);
   }
 
   handleSubmit(e){
@@ -33,7 +31,7 @@ class TaskForm extends React.Component {
   componentDidUpdate(prevProps){
     const { task, column, project, fetchTask, updateTask, teamId } = this.props;
 
-    if (this.needsUpdate(prevProps, this.state)){ // this.state.title
+    if (this.needsUpdate(prevProps, this.state)){ 
       const newTask = Object.assign(task, this.state);
       updateTask(newTask, column.id, project.id, teamId);
     }
@@ -85,7 +83,7 @@ class TaskForm extends React.Component {
 
   toggleLabel(){
     if(this.state.completed === false){
-      return "Mark Complete";
+      return "Mark as Completed";
     } else if (this.state.completed === true) {
       return "Completed";
     }
@@ -98,24 +96,6 @@ class TaskForm extends React.Component {
     });
   }
 
-  // setDueDate(){
-  //   if (!this.state.due_date){
-  //
-  //     this.setState({due_date: this.state.due_date || null);
-  //   }
-  // }
-
-  // setDateButton(){
-  //
-  //   if (!this.state.due_date){
-  //
-  //   } else {
-  //
-  //     return (
-  //
-  //       );
-  //   }
-  // }
 
   render(){
     const { task, column, project, closeModal } = this.props;
@@ -177,7 +157,7 @@ class TaskForm extends React.Component {
                     <textarea id="description" className="description-task-textarea"
                       onChange={this.update('description')}
                       value={this.state.description}
-                      placeholder="Description"
+                      placeholder="Enter the Description"
                       ></textarea>
                   </div>
                 </div>

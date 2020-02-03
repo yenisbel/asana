@@ -48,10 +48,10 @@
   .logo {
     width: 111px;
     height: 22px;
-    font-weight: bolder;
     vertical-align: middle;
     background: none;
     color: rgb(103, 182, 235);
+    font-weight: initial;
   }
   .login-signup {
     display: flex;

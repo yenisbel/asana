@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Autocomplete from "react-autocomplete";
 
 class MemberForm extends React.Component {
   constructor(props){
@@ -20,7 +21,7 @@ class MemberForm extends React.Component {
     const { teamId } = this.props;
     this.props.action(member, teamId).then(({member}) => {
       this.props.closeModal();
-      if (this.props.formType === 'Create Member'){
+      if (this.props.formType === 'Add Member'){
         this.props.history.push(`/teams/${teamId}`);
       } else {
         this.props.history.push(`/teams/${teamId}`);
@@ -30,6 +31,7 @@ class MemberForm extends React.Component {
 
 
   render() {
+    // const {requestAllUsers} = this.props;
     return (
       <section className="new-edit-modal">
         <div className="new-edit-header">
@@ -39,10 +41,24 @@ class MemberForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="create-edit-box">
           {/* {this.renderErrors()} */}
           <div className="create-edit-form">
+                
             <div className="create-edit-name">
               <label htmlFor="username" className="label-name">
                 Name
               </label>
+                {/* <Autocomplete 
+                  getItemValue={(item) => item.label}
+                  items={requestAllUsers}
+                  renderItem={(item, isHighlighted) =>
+                    <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                      {item.label}
+                    </div>
+                  }
+                  value={this.state.username}
+                  onChange={this.update('username')}
+                  onSelect={(val) => value = val}
+                /> */}
+                
                 <input id="username" type="text"
                   value={this.state.username}
                   onChange={this.update('username')}

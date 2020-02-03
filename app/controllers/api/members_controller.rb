@@ -16,6 +16,7 @@ class Api::MembersController < ApplicationController
     end
 
     def create
+        # debugger
         @member = User.find_by(username: params[:member][:username])
         current_team.members << @member
         current_team.save
