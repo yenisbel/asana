@@ -49,7 +49,7 @@ class AsideSectionProjectIndex extends React.Component {
             </label>
             <section className="members-projects-section">
               <div className="aside-members">
-                <label className="projects-members-label">
+                <label className="aside-members-header">
                   Members
                 </label>
                 <ul className="team-members-list">
@@ -58,19 +58,10 @@ class AsideSectionProjectIndex extends React.Component {
                       {member.username}
                     </li>
                   ))}
-                  {/* {members.map((member, i) => (
-                    <Link to={`/teams/${teamId}/members/${member.id}`} key={`member-${i}`} className="link-project-aside">
-                       <li className="aside-project">
-                          <svg className="li-square" style={{ backgroundColor: `#pink`}}></svg>
-                          {member.username}
-                      </li>
-
-                    </Link>
-                  ))} */}
                 </ul>
               </div>
               <div className="aside-projects">
-                <label>
+                <label className="aside-projects-header">
                   Projects
                 </label>
                 <ul className="aside-projects-list">

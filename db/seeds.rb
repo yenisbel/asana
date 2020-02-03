@@ -17,7 +17,7 @@ Column.destroy_all
 user1 = User.create(username: 'test1', password: 'password1', full_name: 'Cindy Loop')
 user2 = User.create(username: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
 user3 = User.create(username: 'test3', password: 'password1', full_name: 'Steve Loop')
-
+user4 = User.create(username: 'test4', password: 'password1', full_name: 'David Chan')
 # require 'faker'
 
 # user1 = User.create(email: Faker::Internet.email, password: 'password')
