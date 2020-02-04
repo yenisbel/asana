@@ -36,7 +36,10 @@ class AsideSectionProjectIndex extends React.Component {
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">
-            <a href="#" aria-label="Got to BlueAsana homepage" className="logo">BlueAsana</a>
+            <Link to={`/teams/${teamId}`}><img src={window.asanaLogoHome}
+              className="logo" />
+            </Link>
+            {/* <a href="#" aria-label="Got to BlueAsana homepage" className="logo">BlueAsana</a> */}
             {/* <Link to={`/teams/${teamId}`} aria-label="Got to BlueAsana homepage" className="logo">
               <h1>Dashboard</h1>
             </Link> */}
@@ -51,7 +54,7 @@ class AsideSectionProjectIndex extends React.Component {
             <section className="members-projects-section">
               <div className="aside-members">
                 <label className="aside-members-header">
-                  Members
+                  <i className="fas fa-users"></i>Members
                 </label>
                 <ul className="team-members-list">
                   {members.map((member, i) => (
@@ -63,7 +66,7 @@ class AsideSectionProjectIndex extends React.Component {
               </div>
               <div className="aside-projects">
                 <label className="aside-projects-header">
-                  Projects
+                  <i className="fas fa-list"></i>Projects
                 </label>
                 <ul className="aside-projects-list">
                   {projects.map((project, i)=> (

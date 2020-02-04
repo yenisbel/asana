@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-// import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
+import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
 
 
 class TaskForm extends React.Component {
@@ -13,7 +13,7 @@ class TaskForm extends React.Component {
       description: props.task.description,
       completed: props.task.completed,
       due_on: props.task.due_on,
-      assignee: props.task.assignee,
+      // assignee: props.task.assignee,
       
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,7 +87,7 @@ class TaskForm extends React.Component {
 
   toggleLabel(){
     if(this.state.completed === false){
-      return "Mark Complete";
+      return "Mark as Completed";
     } else if (this.state.completed === true) {
       return "Completed";
     }
@@ -96,7 +96,7 @@ class TaskForm extends React.Component {
   handleDateChange(date){
 
     this.setState({
-      due_date: date
+      due_on: date
     });
   }
 
@@ -142,8 +142,7 @@ class TaskForm extends React.Component {
                   <textarea id="title" className="title-task-textarea"
                     rows="1"
                     onChange={this.update('title')}
-                    value={this.state.title}
-                    placeholder="Task name">
+                    value={this.state.title}>
                   </textarea>
                 </div>
               </div>
@@ -158,11 +157,11 @@ class TaskForm extends React.Component {
                       </div>
                       <div className="task-token-label">
                         <DatePicker
-                          selected={this.state.due_date != null ? new Date(this.state.due_date) : null}
+                          selected={this.state.due_on != null ? new Date(this.state.due_on) : null}
                           onChange={this.handleDateChange}
                           dateFormat="MMMM d, yyyy"
                           className="date-picker"
-                          placeholderText="Due On"
+                          placeholderText="Due Date"
                           minDate={new Date()}
                           showDisabledMonthNavigation
                           ></DatePicker>
@@ -210,23 +209,7 @@ class TaskForm extends React.Component {
           <footer className="single-pane-footer">
             <div className="comment-composer">
               <div className="avatar">
-                <i class="fas fa-user-friends"></i>
               </div>
-              <div className="task-projects">
-                  <div className="task-project-list">
-                    <div className="task-project-token">
-                      <div className="task-project-link">
-                        <div className="task-pill">
-                          <span>{assignee.username}</span>
-                        </div>
-                      </div>
-                      <div className="task-column-link">
-                        <span>{column.name}</span>
-                        <i></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               <div className="comment-composer-editor">
                 <div className="scrollable">
                   <div className="comment=composer-text-editor-container">

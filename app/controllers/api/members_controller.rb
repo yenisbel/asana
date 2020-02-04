@@ -2,7 +2,7 @@ class Api::MembersController < ApplicationController
     before_action :require_logged_in
   
     def index
-       @members = current_team.members
+       @members =  @current_team&.members
       render :index
     end
   
@@ -16,7 +16,6 @@ class Api::MembersController < ApplicationController
     end
 
     def create
-        # debugger
         @member = User.find_by(username: params[:member][:username])
         current_team.members << @member
         current_team.save

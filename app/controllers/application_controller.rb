@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :require_logged_in, :current_team, :all_columns, :all_tasks
+  
+  before_action :current_team
 
   def current_user
     return nil unless session[:session_token]
@@ -27,6 +29,9 @@ class ApplicationController < ActionController::Base
       @current_team = Team.find(params[:team_id])
     elsif params[:id]
       @current_team = Team.find(params[:id])
+    end
+    if @current_team.nil? && current_user
+      @current_team = current_user.teams.first
     end
   end
 

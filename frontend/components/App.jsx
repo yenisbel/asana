@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div>
       <header>
-        <h1 className="logo">BlueAsana</h1>
+        <h1>BlueAsana</h1>
         {/* <img src="app/assets/images/favicon.ico"/> */}
       </header>
       <Modal />

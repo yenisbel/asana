@@ -18,9 +18,15 @@ class TeamForm extends React.Component {
     e.preventDefault();
     const team = Object.assign({}, this.state);
     const { teamId } = this.props;
+
+
     this.props.action(team).then((res) => {
       this.props.closeModal();
-      this.props.history.push(`/teams/${res.payload.team.id}`);
+      if (this.props.formType === 'Create Team'){
+        this.props.history.push(`/teams/${res.payload.team.id}`);
+      } else {
+        this.props.history.push(`/teams/${teamId}`);
+      }
     });
   }
 

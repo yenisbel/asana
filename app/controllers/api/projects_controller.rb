@@ -30,13 +30,13 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_team.projects.includes(columns: [:tasks])
+    @projects =  @current_team&.projects.includes(columns: [:tasks])
     render :index
   end
 
   def destroy
     @project = Project.find(params[:id])
-    if @project.team_id == current_team.id
+    if @project.team_id ==  @current_team&.id
       @project.destroy
       render json: {id: @project.id}
     end
