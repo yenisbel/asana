@@ -45,11 +45,8 @@ table {
 button {
     display: inline-block;
     border: none;
-    /* padding: 1rem 2rem; */
     margin: 0;
     text-decoration: none;
-    /* background: #F6F8F9; */
-    /* color: #ffffff; */
     cursor: pointer;
     text-align: center;
     transition: transform 100ms ease;
@@ -57,15 +54,6 @@ button {
     -moz-appearance: none;
 }
 
-/* button:hover,
-button:focus {
-	  background: #F6F8F9;
-} */
-
-/* button:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-} */
 
 button:active {
     transform: scale(0.99);

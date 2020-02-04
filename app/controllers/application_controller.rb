@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
   def current_team
     if params[:team_id]
       @current_team = Team.find(params[:team_id])
-    elsif params[:id]
-      @current_team = Team.find(params[:id])
+    # elsif params[:id]
+    #   @current_team = Team.find(params[:id])
     end
     if @current_team.nil? && current_user
       @current_team = current_user.teams.first

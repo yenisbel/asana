@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
       log_in(@user)
       render 'api/users/show'
     else
-      render json: ['The combination credentials is not correct'], status: 401
+      render json: ['The combination of credentials is not correct'], status: 401
     end
   end
 

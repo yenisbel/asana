@@ -17,13 +17,13 @@
 
 
   .logo {
-      background-image: url(../images/favicon.ico);
-      background-position: 17px 0;
-      background-repeat: no-repeat;
-      background-size: 80px 16px;
-      -webkit-box-flex: 1;
-      flex-grow: 1;
-      height: 16px;
+    background-image: url(../images/favicon.ico);
+    background-position: 17px 0;
+    background-repeat: no-repeat;
+    background-size: 80px 16px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    height: 16px;
 
   }
   .login-signup {
@@ -74,7 +74,13 @@
     background-color: rgb(235, 103, 103);
     color: white;
     height: 50px;
-    transition: background-color, .15s,color .15s ease-in-out; 
+    border-radius: 2px;
+    font-weight: 600px;
+    font-size: 14px;
+    padding: 0 16px;
+    width: 100px;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
   
   body {
@@ -117,7 +123,6 @@
   .content {
     display: flex;
     justify-content: flex-end;
-    /* flex-direction: row-reverse; */
     padding: 32px 5%;
     width: 100%;
   }
@@ -148,6 +153,7 @@
     font-size: 14px;
     padding: 0 16px;
     height: 46px;
+    cursor: pointer;
   }
   
   .login-form-container {
@@ -200,7 +206,24 @@
     font-weight: normal;
   }
   
-  .splash-h1{
+.splash-main-nav {
+    background-color: white;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.splash-logo-link {
+    height: 26px;
+    margin-left: 18px;
+}
+.splash-h1{
     color: #151b26;
     font-weight: 400;
     padding-bottom: 32px;
@@ -209,44 +232,45 @@
     line-height: 1.244;
     width: 90%;
     margin: auto;
-  }
+}
+
   
-  .splash-content{
+.splash-content{
     /* box-sizing: border-box; */
     max-width: 1920px;
     width: 65%;
     margin: auto;
-  }
+}
   
-  .section-splash {
+.section-splash {
     padding: 96px 0 28px;
     display: block;
     text-align: center;
-  }
+}
   
-  .splash-content-text {
+.splash-content-text {
     /* text-align: center; */
     margin-bottom: 48px;
     margin-left: -16px;
     margin-right: -16px;
     box-sizing: border-box;
-  }
+}
   
-  .further-div {
+.further-div {
     padding: 0 16px;
     margin-left: 5%;
     text-align: center;
-  }
+}
   
-  .splash-text {
+.splash-text {
     font-size: 1.375rem;
     line-height: 1.636;
     color: rgb(100, 111, 121);
     width: 90%;
     margin: auto;
-  }
+}
   
-  .login-input-splash {
+.login-input-splash {
     height: 40px;
     border: 2px solid #E0E6E8;
     border-radius: 3px;
@@ -256,18 +280,16 @@
     margin-bottom: 30px;
     font-size: 16px;
     color: #646F7A;
-  }
+}
 
 .splash-video-banner {
     background-color: #f6f7fa;
     position: relative;
     height: 800px;
     width: 100%;
-    /* margin-top: 15px; */
 }
 
 .splash-video-banner > video {
-    /* height: 708px; */
     position: absolute;
     top: 0;
     left: 0;
