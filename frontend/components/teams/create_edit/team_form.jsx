@@ -18,9 +18,15 @@ class TeamForm extends React.Component {
     e.preventDefault();
     const team = Object.assign({}, this.state);
     const { teamId } = this.props;
+
+
     this.props.action(team).then((res) => {
       this.props.closeModal();
-      this.props.history.push(`/teams/${res.payload.team.id}`);
+      if (this.props.formType === 'Create Team'){
+        this.props.history.push(`/teams/${res.payload.team.id}`);
+      } else {
+        this.props.history.push(`/teams/${teamId}`);
+      }
     });
   }
 
@@ -42,13 +48,14 @@ class TeamForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="create-edit-box">
           <div className="create-edit-form">
             <div className="create-edit-name">
-              <label htmlFor="team-name" className="label-team-name">
+              <label htmlFor="team-name" className="label-name">
                 Team Name
               </label>
                 <input id="team" type="text"
                   onChange={this.update('name')}
                   value={this.state.name}
-                  className="create-edit-input-name"/>
+                  className="create-edit-input-name"
+                  placeholder="For example: 'Marketing' or 'Design'"/>
             </div>
 
               <div className="create-edit-button">

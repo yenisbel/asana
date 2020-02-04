@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router-dom';
-import Autocomplete from "react-autocomplete";
+import Search from 'react-search';
+
 
 class MemberForm extends React.Component {
   constructor(props){
@@ -29,9 +30,20 @@ class MemberForm extends React.Component {
     });
   }
 
+  HiItems(items) {
+    console.log(items)
+  }
 
   render() {
     // const {requestAllUsers} = this.props;
+    // let items = this.props.requestAllUsers;
+    // let items = [
+    //   { id: 0, value: 'ruby' },
+    //   { id: 1, value: 'javascript' },
+    //   { id: 2, value: 'lua' },
+    //   { id: 3, value: 'go' },
+    //   { id: 4, value: 'julia' }
+    // ]
     return (
       <section className="new-edit-modal">
         <div className="new-edit-header">
@@ -46,23 +58,17 @@ class MemberForm extends React.Component {
               <label htmlFor="username" className="label-name">
                 Name
               </label>
-                {/* <Autocomplete 
-                  getItemValue={(item) => item.label}
-                  items={requestAllUsers}
-                  renderItem={(item, isHighlighted) =>
-                    <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                      {item.label}
-                    </div>
-                  }
+              {/* <div>
+                <Search items={requestAllUsers}
+                        placeholder='Pick your language'
+                        maxSelected={3}
+                        multiple={true}
+                        onItemsChanged={this.HiItems.bind(this)} />
+              </div> */}
+                 <input id="username" type="text"
                   value={this.state.username}
                   onChange={this.update('username')}
-                  onSelect={(val) => value = val}
-                /> */}
-                
-                <input id="username" type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  className="create-edit-input-name"/>
+                  className="create-edit-input-name"/> 
             </div>
             <div className="create-edit-button">
                 <input className="create-edit-submit" type="submit" value={this.props.formType}/>

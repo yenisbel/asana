@@ -12,7 +12,7 @@ const msp = ({ errors, session, entities }, ownProps) => {
   return {
     formType: 'Create Team',
     errors: errors.team,
-    formMessage: "New Team",
+    formMessage: "Create new team",
     team: {name: '', members:''},
     teamId
   };

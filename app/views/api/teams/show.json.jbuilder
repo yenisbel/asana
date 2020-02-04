@@ -6,7 +6,7 @@ end
 @team.members.each do |member|
   json.members do
     json.set! member.id do
-      json.team_id current_team.id
+      json.team_id @current_team&.id
       json.extract! member, :id, :username
     end
   end

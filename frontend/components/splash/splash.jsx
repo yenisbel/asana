@@ -44,6 +44,9 @@ class Splash extends React.Component {
           <button className="header-signup trial" onClick={() => openModal('Sign Up')}>Try for free</button>
         </div>
       </section>
+      <div className="splash-section splash-video-banner">
+        <video src={window.splashVideo} autoPlay loop muted></video>
+      </div>
     </div>
   );
   }
@@ -68,9 +71,6 @@ class Splash extends React.Component {
 
   greeting() {
     const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown, openTeamDropdown } = this.props;
-
-    // let name = currentUser.username.split('@')[0];
-
     return (
       <section>
         <header>
@@ -92,7 +92,7 @@ class Splash extends React.Component {
                 <button className="header-new" onClick={() => {
                     closeTeamDropdown();
                     openModal('Create Project');
-                  }}>+ New</button>
+                  }}>+</button>
                 <button className="user-menu" onClick={() => this.toggleDropdown()}>{currentUser.username}</button>
                 <div className="teams-dropdown">
                   {this.dropdownTeamsOpen()}

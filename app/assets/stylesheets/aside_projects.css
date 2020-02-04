@@ -32,14 +32,10 @@
   margin-right: 10px;
 }
 
-.aside-project{
-  font-size: 13px;
-}
-
 .aside-projects-members{
-  border-bottom: 2px solid rgb(235, 103, 103);
-  border-top: 2px solid rgb(235, 103, 103);
-  padding-bottom: 30px;
+  border-bottom: 1px solid #273240;
+  border-top:1px solid #273240;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 
@@ -58,14 +54,18 @@
   color: white;
 }
 
-
 .team-member{
-  margin-bottom: 10px;
   margin-left: 10px;
-  font-weight: normal;
-  font-size: 13px;
-  color: #d5dce0;
 }
+
+.team-member, .aside-project{
+  color: #9ca6af;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 11px;
+  line-height: 17px;
+  display: block;
+}
+
 .aside-members, .aside-projects{
   display: flex;
   flex-direction: column;
@@ -73,10 +73,21 @@
   color: white;
   font-weight: bolder;
   font-size: 15px;
+  border-top: 1px solid #273240;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .aside-projects-header, .aside-members-header {
   margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  color: #cbd4db;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400
 }
 
 .aside-index{
@@ -90,7 +101,7 @@
   top: 0;
   left: 0;
   overflow-x: hidden;
-  background-color:  rgb(230, 122, 122);
+  background-color:  #151b26;
   padding-top: 10px;
   transition: 0.5s;
 }
@@ -99,11 +110,12 @@
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 23px;
+  font-size: 16px;
   margin-left: 50px;
   color: #9CA6AE;
-  background-color:  rgb(230, 122, 122);
-  height: 20px;
+  background-color: #151b26;
+  height: 16px;
+  width: 25px;
 
 }
 

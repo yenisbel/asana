@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
-// import "react-datepicker/dist/react-datepicker.css";
+
 
 class TaskForm extends React.Component {
   constructor(props){
@@ -12,12 +12,16 @@ class TaskForm extends React.Component {
       title: props.task.title,
       description: props.task.description,
       completed: props.task.completed,
-      due_date: props.task.due_date,
+      due_on: props.task.due_on,
+      // assignee: props.task.assignee,
+      
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.handleDateChange =this.handleDateChange.bind(this);
+    // this.setDateButton = this.setDateButton.bind(this);
+    // this.setDueDate = this.setDueDate.bind(this);
   }
 
   handleSubmit(e){
@@ -31,7 +35,7 @@ class TaskForm extends React.Component {
   componentDidUpdate(prevProps){
     const { task, column, project, fetchTask, updateTask, teamId } = this.props;
 
-    if (this.needsUpdate(prevProps, this.state)){ 
+    if (this.needsUpdate(prevProps, this.state)){ // this.state.title
       const newTask = Object.assign(task, this.state);
       updateTask(newTask, column.id, project.id, teamId);
     }
@@ -92,10 +96,28 @@ class TaskForm extends React.Component {
   handleDateChange(date){
 
     this.setState({
-      due_date: date
+      due_on: date
     });
   }
 
+  // setDueDate(){
+  //   if (!this.state.due_date){
+  //
+  //     this.setState({due_date: this.state.due_date || null);
+  //   }
+  // }
+
+  // setDateButton(){
+  //
+  //   if (!this.state.due_date){
+  //
+  //   } else {
+  //
+  //     return (
+  //
+  //       );
+  //   }
+  // }
 
   render(){
     const { task, column, project, closeModal } = this.props;
@@ -135,11 +157,11 @@ class TaskForm extends React.Component {
                       </div>
                       <div className="task-token-label">
                         <DatePicker
-                          selected={this.state.due_date != null ? new Date(this.state.due_date) : null}
+                          selected={this.state.due_on != null ? new Date(this.state.due_on) : null}
                           onChange={this.handleDateChange}
                           dateFormat="MMMM d, yyyy"
                           className="date-picker"
-                          placeholderText="Due On"
+                          placeholderText="Due Date"
                           minDate={new Date()}
                           showDisabledMonthNavigation
                           ></DatePicker>
@@ -157,7 +179,7 @@ class TaskForm extends React.Component {
                     <textarea id="description" className="description-task-textarea"
                       onChange={this.update('description')}
                       value={this.state.description}
-                      placeholder="Enter the Description"
+                      placeholder="Description"
                       ></textarea>
                   </div>
                 </div>

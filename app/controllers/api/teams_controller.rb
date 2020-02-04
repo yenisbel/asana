@@ -8,6 +8,7 @@ class Api::TeamsController < ApplicationController
     if @team.save
       Membership.create!(team_id: @team.id, member_id: current_user.id)
       @members = @team.members
+      @current_team = @team
       render :show
     else
       render json: @team.errors.full_messages, status: 422
@@ -27,7 +28,7 @@ class Api::TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @membership = Membership.find_by(team_id: @team.id)
     @teams = current_user.teams
-    if (@membership.team_id == current_team.id) && (@membership.member_id == current_user.id) && (@teams.length > 1)
+    if (@membership.team_id ==  @current_team&.id) && (@membership.member_id == current_user.id) && (@teams.length > 1)
       @membership.destroy
       render json: {id: @team.id}
     elsif @teams.length <= 1

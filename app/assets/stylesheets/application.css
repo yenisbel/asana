@@ -14,44 +14,17 @@
  *= require_self
  */
 
- /* .login-form-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-  }
- 
-  .login-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
- 
-  .login-input {
-    margin-left: 20px;
-  }
- 
-  .login-form-box {
-    outline: 1px solid black;
-    padding: 20px;
-  }
 
-
-  .session-submit {
-    text-transform: capitalize;
-  }
-
-  .header-link {
-    text-decoration: none;
-    color: black;
-  } */
 
   .logo {
-    width: 111px;
-    height: 22px;
-    vertical-align: middle;
-    background: none;
-    color: rgb(103, 182, 235);
-    font-weight: initial;
+      background-image: url(../images/favicon.ico);
+      background-position: 17px 0;
+      background-repeat: no-repeat;
+      background-size: 80px 16px;
+      -webkit-box-flex: 1;
+      flex-grow: 1;
+      height: 16px;
+
   }
   .login-signup {
     display: flex;
@@ -284,6 +257,22 @@
     font-size: 16px;
     color: #646F7A;
   }
+
+.splash-video-banner {
+    background-color: #f6f7fa;
+    position: relative;
+    height: 800px;
+    width: 100%;
+    /* margin-top: 15px; */
+}
+
+.splash-video-banner > video {
+    /* height: 708px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
   
   ::placeholder {
     color: #B7BFC5;

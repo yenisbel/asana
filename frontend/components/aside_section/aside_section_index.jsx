@@ -36,10 +36,14 @@ class AsideSectionProjectIndex extends React.Component {
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">
-            <Link to={`/teams/${teamId}`} className="logo">
-              <h1>Dashboard</h1>
+            <Link to={`/teams/${teamId}`}><img src={window.asanaLogoHome}
+              className="logo" />
             </Link>
-            <button className="closebtn" onClick={this.props.closeNav}> &#9776;</button>
+            {/* <a href="#" aria-label="Got to BlueAsana homepage" className="logo">BlueAsana</a> */}
+            {/* <Link to={`/teams/${teamId}`} aria-label="Got to BlueAsana homepage" className="logo">
+              <h1>Dashboard</h1>
+            </Link> */}
+            <button className="closebtn" onClick={this.props.closeNav}> &#60;&#9776;</button>
           </div>
           <section className="aside-projects-members">
             <label className="team-header">
@@ -50,7 +54,7 @@ class AsideSectionProjectIndex extends React.Component {
             <section className="members-projects-section">
               <div className="aside-members">
                 <label className="aside-members-header">
-                  Members
+                  <i className="fas fa-users"></i>Members
                 </label>
                 <ul className="team-members-list">
                   {members.map((member, i) => (
@@ -62,13 +66,13 @@ class AsideSectionProjectIndex extends React.Component {
               </div>
               <div className="aside-projects">
                 <label className="aside-projects-header">
-                  Projects
+                  <i className="fas fa-list"></i>Projects
                 </label>
                 <ul className="aside-projects-list">
                   {projects.map((project, i)=> (
                     <Link to={`/teams/${teamId}/projects/${project.id}`} key={`project-${i}`} className="link-project-aside">
                       <li className="aside-project">
-                        <svg className="li-square" style={{ backgroundColor: `#blue`}}></svg>
+                        <svg className="li-square"></svg>
                         {project.name}
                       </li>
                     </Link>
