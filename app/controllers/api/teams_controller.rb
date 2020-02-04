@@ -32,7 +32,7 @@ class Api::TeamsController < ApplicationController
       @membership.destroy
       render json: {id: @team.id}
     elsif @teams.length <= 1
-      render json: ["If you want to be removed from this team, please create a new team"]
+      render json: ["If you want to be removed from this team, create a new team first"]
     end
   end
 

@@ -14,10 +14,6 @@ const App = () => {
 
   return (
     <div>
-      <header>
-        <h1>BlueAsana</h1>
-        {/* <img src="app/assets/images/favicon.ico"/> */}
-      </header>
       <Modal />
       <SplashContainer />
       <div className="main-ui">

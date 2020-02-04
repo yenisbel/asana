@@ -27,11 +27,15 @@ class Splash extends React.Component {
     const { openModal, closeModal } = this.props;
     return (
     <div>
-      <nav className="login-signup">
-        <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
-        &nbsp;
-        <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
-      </nav>
+      <header className="splash-main-nav">
+        <a href=""><img src={window.asanaLogoSplash} alt="logo" className="splash-logo-link" /></a>
+        <nav className="login-signup">
+          <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
+          &nbsp;
+          <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
+        </nav>
+      </header>
+      
       <section className="section-splash">
         <div className="splash-content">
           <section className="splash-content-text">
@@ -41,7 +45,7 @@ class Splash extends React.Component {
             </div>
           </section>
           
-          <button className="header-signup trial" onClick={() => openModal('Sign Up')}>Try for free</button>
+          <button className="trial" onClick={() => openModal('Sign Up')}>Try for free</button>
         </div>
       </section>
       <div className="splash-section splash-video-banner">
