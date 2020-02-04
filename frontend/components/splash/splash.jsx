@@ -92,7 +92,7 @@ class Splash extends React.Component {
                 <button className="header-new" onClick={() => {
                     closeTeamDropdown();
                     openModal('Create Project');
-                  }}>+ New</button>
+                  }}>+</button>
                 <button className="user-menu" onClick={() => this.toggleDropdown()}>{currentUser.username}</button>
                 <div className="teams-dropdown">
                   {this.dropdownTeamsOpen()}

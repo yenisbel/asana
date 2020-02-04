@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
-// import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+// import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
+
 
 class TaskForm extends React.Component {
   constructor(props){
@@ -12,12 +12,16 @@ class TaskForm extends React.Component {
       title: props.task.title,
       description: props.task.description,
       completed: props.task.completed,
-      due_date: props.task.due_date,
+      due_on: props.task.due_on,
+      assignee: props.task.assignee,
+      
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.handleDateChange =this.handleDateChange.bind(this);
+    // this.setDateButton = this.setDateButton.bind(this);
+    // this.setDueDate = this.setDueDate.bind(this);
   }
 
   handleSubmit(e){
@@ -31,7 +35,7 @@ class TaskForm extends React.Component {
   componentDidUpdate(prevProps){
     const { task, column, project, fetchTask, updateTask, teamId } = this.props;
 
-    if (this.needsUpdate(prevProps, this.state)){ 
+    if (this.needsUpdate(prevProps, this.state)){ // this.state.title
       const newTask = Object.assign(task, this.state);
       updateTask(newTask, column.id, project.id, teamId);
     }
@@ -83,7 +87,7 @@ class TaskForm extends React.Component {
 
   toggleLabel(){
     if(this.state.completed === false){
-      return "Mark as Completed";
+      return "Mark Complete";
     } else if (this.state.completed === true) {
       return "Completed";
     }
@@ -96,6 +100,24 @@ class TaskForm extends React.Component {
     });
   }
 
+  // setDueDate(){
+  //   if (!this.state.due_date){
+  //
+  //     this.setState({due_date: this.state.due_date || null);
+  //   }
+  // }
+
+  // setDateButton(){
+  //
+  //   if (!this.state.due_date){
+  //
+  //   } else {
+  //
+  //     return (
+  //
+  //       );
+  //   }
+  // }
 
   render(){
     const { task, column, project, closeModal } = this.props;
@@ -120,7 +142,8 @@ class TaskForm extends React.Component {
                   <textarea id="title" className="title-task-textarea"
                     rows="1"
                     onChange={this.update('title')}
-                    value={this.state.title}>
+                    value={this.state.title}
+                    placeholder="Task name">
                   </textarea>
                 </div>
               </div>
@@ -157,7 +180,7 @@ class TaskForm extends React.Component {
                     <textarea id="description" className="description-task-textarea"
                       onChange={this.update('description')}
                       value={this.state.description}
-                      placeholder="Enter the Description"
+                      placeholder="Description"
                       ></textarea>
                   </div>
                 </div>
@@ -187,7 +210,23 @@ class TaskForm extends React.Component {
           <footer className="single-pane-footer">
             <div className="comment-composer">
               <div className="avatar">
+                <i class="fas fa-user-friends"></i>
               </div>
+              <div className="task-projects">
+                  <div className="task-project-list">
+                    <div className="task-project-token">
+                      <div className="task-project-link">
+                        <div className="task-pill">
+                          <span>{assignee.username}</span>
+                        </div>
+                      </div>
+                      <div className="task-column-link">
+                        <span>{column.name}</span>
+                        <i></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <div className="comment-composer-editor">
                 <div className="scrollable">
                   <div className="comment=composer-text-editor-container">

@@ -46,12 +46,19 @@
   } */
 
   .logo {
-    width: 111px;
+      background-image: url(../images/favicon.ico);
+      background-position: 17px 0;
+      background-repeat: no-repeat;
+      background-size: 80px 16px;
+      -webkit-box-flex: 1;
+      flex-grow: 1;
+      height: 16px;
+    /* width: 111px;
     height: 22px;
     vertical-align: middle;
     background: none;
     color: rgb(103, 182, 235);
-    font-weight: initial;
+    font-weight: initial; */
   }
   .login-signup {
     display: flex;

@@ -42,13 +42,14 @@ class TeamForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="create-edit-box">
           <div className="create-edit-form">
             <div className="create-edit-name">
-              <label htmlFor="team-name" className="label-team-name">
+              <label htmlFor="team-name" className="label-name">
                 Team Name
               </label>
                 <input id="team" type="text"
                   onChange={this.update('name')}
                   value={this.state.name}
-                  className="create-edit-input-name"/>
+                  className="create-edit-input-name"
+                  placeholder="For example: 'Marketing' or 'Design'"/>
             </div>
 
               <div className="create-edit-button">

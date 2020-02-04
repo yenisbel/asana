@@ -36,10 +36,11 @@ class AsideSectionProjectIndex extends React.Component {
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">
-            <Link to={`/teams/${teamId}`} className="logo">
+            <a href="#" aria-label="Got to BlueAsana homepage" className="logo">BlueAsana</a>
+            {/* <Link to={`/teams/${teamId}`} aria-label="Got to BlueAsana homepage" className="logo">
               <h1>Dashboard</h1>
-            </Link>
-            <button className="closebtn" onClick={this.props.closeNav}> &#9776;</button>
+            </Link> */}
+            <button className="closebtn" onClick={this.props.closeNav}> &#60;&#9776;</button>
           </div>
           <section className="aside-projects-members">
             <label className="team-header">
@@ -68,7 +69,7 @@ class AsideSectionProjectIndex extends React.Component {
                   {projects.map((project, i)=> (
                     <Link to={`/teams/${teamId}/projects/${project.id}`} key={`project-${i}`} className="link-project-aside">
                       <li className="aside-project">
-                        <svg className="li-square" style={{ backgroundColor: `#blue`}}></svg>
+                        <svg className="li-square"></svg>
                         {project.name}
                       </li>
                     </Link>
