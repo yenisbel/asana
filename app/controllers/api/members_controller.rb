@@ -9,16 +9,16 @@ class Api::MembersController < ApplicationController
     def destroy
         @member = User.find(params[:id])
         if @member
-            current_team.members = current_team.members - [@member]
-            current_team.save
+            @current_team.members = @current_team.members - [@member]
+            @current_team.save
             render json: {id: @member.id}
         end
     end
 
     def create
         @member = User.find_by(username: params[:member][:username])
-        current_team.members << @member
-        current_team.save
+        @current_team.members << @member
+        @current_team.save
         render :show
     end
 

@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def all_columns
-    @projects = current_team.projects.select(:id)
+    @projects = @current_team.projects.select(:id)
     columns_arr = []
     @projects.each do |project|
       columns = Column.all.where(project_id: project.id)
