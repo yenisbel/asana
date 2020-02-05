@@ -5,15 +5,20 @@ import TaskForm from './edit_task';
 import { closeModal } from '../../../actions/modal_actions';
 import { updateTask, fetchTask } from '../../../actions/task_actions';
 
-const msp =({ session, entities }) => {
+const msp =({ session, entities }, ownProps) => {
   const task = entities.tasks[session.currentTaskId] || {};
   const column = entities.columns[task.column_id] || {};
   const teamId = session.currentTeamId;
+  const users = entities.users
+  
   return {
     project: entities.projects[session.currentProjectId],
     task,
+    users,
     column,
-    teamId
+    teamId,
+    currentUser: entities.users[session.currentUserId],
+    currentUserId
   }
 }
 

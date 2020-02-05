@@ -6,6 +6,7 @@ class TeamIndex extends React.Component {
     super(props);
     this.redirect = this.redirect.bind(this);
     this.removeButton = this.removeButton.bind(this);
+   
   }
 
   componentDidMount(){
@@ -31,6 +32,8 @@ class TeamIndex extends React.Component {
       return <div className="no-button"></div>;
     }
   }
+
+  
 
   render() {
     const { teams, logout, closeTeamDropdown, createTeam, openModal, deleteTeam, teamId } = this.props;
@@ -70,7 +73,10 @@ class TeamIndex extends React.Component {
               {this.removeButton(redirectTeam)}
               <div className="menu-separator">
               </div>
-              <div className="team-button">
+              <div className="team-button" onClick={() => {
+                  openModal('My Profile');
+                  closeTeamDropdown();
+                }}>
                 <span className="team-item">
                   My Profile Settings
                 </span>

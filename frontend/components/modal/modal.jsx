@@ -9,6 +9,7 @@ import CreateMemberFormContainer from '../members/create_edit_member/create_memb
 import TaskFormContainer from '../tasks/edit_task/edit_task_container';
 import CreateTeamFormContainer from '../teams/create_edit/create_team_container';
 import UpdateTeamFormContainer from '../teams/create_edit/edit_team_container';
+import ProfileSettingsContainer from '../profile/profile_settings_tabs';
 
 const Modal = ({ modal, closeModal }) => {
 
@@ -40,6 +41,9 @@ const Modal = ({ modal, closeModal }) => {
       break;
     case 'Update Team':
       component = <UpdateTeamFormContainer />;
+      break;
+    case 'My Profile':
+      component = <ProfileSettingsContainer />;
       break;
     default:
       return null;

@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import {RECEIVE_ALL_USERS} from "../actions/user_action";
+import {RECEIVE_ALL_USERS, RECEIVE_USER} from "../actions/user_action";
 import { RECEIVE_CURRENT_USER} from '../actions/session_actions';
 import {RECEIVE_TEAM} from '../actions/team_actions';
 
@@ -12,6 +12,9 @@ const usersReducer = (state = {}, action) => {
       return merge({}, action.payload.members);
     case RECEIVE_ALL_USERS:
       return merge({}, state, action.users);
+    case RECEIVE_USER:
+      const { user } = action;
+      return merge({}, oldState, { [user.id]: user });
     default:
       return state;
   }

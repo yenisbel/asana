@@ -25,8 +25,6 @@ class SessionForm extends React.Component {
     });
   }
 
-
-
   componentWillUnmount() {
 
     if (this.props.formType === 'Log In' || this.props.formType === 'Sign Up'){
@@ -71,8 +69,7 @@ class SessionForm extends React.Component {
                   value={this.state.password}
                   onChange={this.update('password')}
                   className="login-input" required placeholder="Password"/>
-                <input className="session-submit button" type="submit" value={this.props.formType} />
-              
+                <input className="session-submit button" type="submit" value={this.props.formType} />                
             </div>
           </form>
           <footer>

@@ -50,8 +50,11 @@ export const updateTeam = team => dispatch => {
   });
 };
 
+
 export const deleteTeam = teamId => dispatch => {
   return TeamAPIUtil.deleteTeam(teamId).then(team => (
     dispatch(removeTeam(teamId))
   ));
 };
+
+

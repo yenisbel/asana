@@ -14,6 +14,17 @@ Project.destroy_all
 Task.destroy_all
 Column.destroy_all
 
+demo = User.create!({username: 'Demo', password: 'password', full_name: 'Demo User'});
+demoteam = Team.create!({name: 'Demo Team'})
+demomember = Membership.create!(member_id: demo.id, team_id: demoteam.id)
+demoproject = Project.create(name: 'Fundraiser', team_id: demoteam.id, description: 'demoteam for advisor team')
+democolumn1 = Column.create(name: 'In Progress', project_id: demoproject.id)
+democolumn2 = Column.create(name: 'To Do', project_id: demoproject.id)
+demotask1 = Task.create(title: 'Demo Task1', project_id: demoproject.id, author_id: demo.id, column_id: democolumn1.id , description: 'seek speakers for advisor team conference')
+demotask2 = Task.create(title: 'Demo Task2', project_id: demoproject.id, author_id: demo.id, column_id: democolumn2.id , description: 'seek speakers for IT team conference')
+demotask3 = Task.create(title: 'Demo Task3', project_id: demoproject.id, author_id: demo.id, column_id: democolumn1.id , description: 'seek speakers for Invesment Fundraiser event')
+
+
 user1 = User.create(username: 'test1', password: 'password1', full_name: 'Cindy Loop')
 user2 = User.create(username: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
 user3 = User.create(username: 'test3', password: 'password1', full_name: 'Steve Loop')

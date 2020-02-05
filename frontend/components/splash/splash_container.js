@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { logout, login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import Splash from './splash';
 import { openNav, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, openTeamDropdown, closeTeamDropdown } from '../../actions/ui_actions';
@@ -18,6 +18,7 @@ const msp = ({ session, entities, ui }, ownProps) => {
 
 const mdp = dispatch => ({
   logout: () => dispatch(logout()),
+  processForm: (user) => dispatch(login(user)),
   openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
   closeModal: () => dispatch(closeModal()),
   openNav: () => dispatch(openNav()),

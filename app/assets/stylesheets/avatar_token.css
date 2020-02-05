@@ -1,0 +1,225 @@
+.avatar-token {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: none;
+    border-radius: 50%;
+    position: relative;
+    color: white;
+
+    /* default size and color */
+    width: 30px;
+    height: 30px;
+    background-color: #eec300;
+    border: 1px solid #be9c09;
+    font-size: 11px;
+}
+
+.avatar-token.large-token {
+    min-width: 36px; /* NOTE: min-width and min-height are specified to prevent tokens from getting 'squished' */
+    min-height: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+}
+
+.avatar-token.medium-token {
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.avatar-token.small-token {
+    min-width: 24px;
+    min-height: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.avatar-token.large-token > i {
+    font-size: 20px;
+}
+
+.avatar-token.medium-token > i {
+   font-size: 16px;
+} 
+
+.avatar-token.small-token > i {
+    font-size: 15px;
+}
+
+.avatar-token.pointer {
+    cursor: pointer;
+}
+
+
+/* AvatarTooltip Styling */
+
+.avatar-tooltip.hidden,
+.small-user-info-tooltip.hidden {
+    display: none;
+    /* opacity: 0; */
+}
+
+.avatar-tooltip {
+    position: absolute;
+    width: 181px;
+    height: 135px;
+    border-radius: 10px;
+    background-color: #eec300;
+    z-index: 1000;
+    /* transition-delay: 400ms;
+    transition-property: opacity; */
+}
+
+.avatar-tooltip.above {
+    bottom: 28px;
+}
+
+.avatar-tooltip.below {
+    top: 28px;
+}
+
+.avatar-tooltip.justify-left {
+    left: 0;
+}
+
+.avatar-tooltip.justify-right {
+    right: 0;
+}
+
+
+.large-token > .avatar-tooltip.above {
+    bottom: 38px;
+}
+
+.large-token > .avatar-tooltip.below {
+    top: 38px;
+}
+
+.avatar-tooltip-bridge {
+    position: absolute;
+    height: 18px;
+    width: 24px;
+    background-color: transparent;
+    /* background-color: red; */
+}
+
+.avatar-tooltip.above > .avatar-tooltip-bridge {
+    bottom: -18px;
+}
+
+.avatar-tooltip.below > .avatar-tooltip-bridge {
+    top: -18px;
+}
+
+.avatar-tooltip.justify-left > .avatar-tooltip-bridge {
+    left: 0;
+}
+
+.avatar-tooltip.justify-right > .avatar-tooltip-bridge {
+    right: 0;
+}
+
+.large-token > .avatar-tooltip > .avatar-tooltip-bridge {
+    width: 36px;
+}
+
+.avatar-tooltip-top {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-tooltip-top > i {
+    font-size: 80px;
+}
+
+.avatar-tooltip-bottom {
+    height: 45px;
+    background: linear-gradient(to bottom, #e3c041, #7d6920);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.avatar-tooltip-bottom > p {
+    margin-left: 17px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.edit-profile-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    box-shadow: 0 0 5px #26151B26, inset 0 0 5px #26151B26;
+}
+
+.edit-profile-btn:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px #26151B26;
+}
+
+/* Small User Info Tooltip */
+
+.small-user-info-tooltip {
+    position: absolute;
+    top: 34px;
+    right: -14px;
+
+    /* width: 110px; */
+    min-height: 55px;
+    min-width: 66px;
+    max-width: 172px;
+    width: auto;
+    
+    border-radius: 4px;
+    background-color: #1d222c;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.small-user-info-tooltip > i {
+    position: absolute;
+    top: -22px;
+    right: 12px;
+    color: #1d222c;
+    font-size: 38px;
+}
+
+.small-user-info-tooltip > h1 {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    /* width: auto; */
+    max-width: 152px;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.small-user-info-tooltip > h2 {
+    color: #868f98;
+    font-size: 11px;
+    margin-top: 2px;
+}

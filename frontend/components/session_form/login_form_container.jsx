@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { requestAllTeams, createTeam } from '../../actions/team_actions';
-import { login, removeErrors, demoLogin } from '../../actions/session_actions';
+import { login, removeErrors } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
 
@@ -21,7 +21,7 @@ const mdp = dispatch => {
     requestAllTeams: () => dispatch(requestAllTeams()),
     processForm: (user) => dispatch(login(user)),
     removeErrors: () => dispatch(removeErrors()),
-    demoLogin: () => dispatch(demoLogin()),
+    login: (user) => dispatch(login(user)),
     otherForm: (
       <button className="modal-signup" onClick={() => dispatch(openModal('Sign Up'))}>
         Sign Up

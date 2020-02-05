@@ -24,7 +24,7 @@ class Api::TeamsController < ApplicationController
     end
   end
 
-  def destroy #remove?
+  def destroy
     @team = Team.find(params[:id])
     @membership = Membership.find_by(team_id: @team.id)
     @teams = current_user.teams

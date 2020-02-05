@@ -15,7 +15,7 @@ const sessionReducer = (state = defaultState, action) => {
     case LOGOUT_CURRENT_USER:
       return defaultState;
     case OPEN_MODAL:
-      return Object.assign({}, state, {currentProjectId: action.projectId, currentTaskId: action.taskId});
+      return Object.assign({}, state, { currentProjectId: action.projectId, currentTaskId: action.taskId});
     case RECEIVE_PROJECT:
       return merge({}, state, {currentProjectId: action.project.id});
     case SELECT_EDIT:

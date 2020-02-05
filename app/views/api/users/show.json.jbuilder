@@ -1,5 +1,5 @@
 json.user do
-  json.extract! @user, :id, :username
+  json.extract! @user, :id, :username, :photo_url, :full_name
 end
 
 json.team do
