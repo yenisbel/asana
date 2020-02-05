@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
-
+import UserListDropdown from "./user_list_dropdown";
 
 class TaskForm extends React.Component {
   constructor(props){
@@ -13,13 +13,14 @@ class TaskForm extends React.Component {
       description: props.task.description,
       completed: props.task.completed,
       due_on: props.task.due_on,
-      // assignee: props.task.assignee,
+      assigneeId: this.props.currentUserId,
       
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.handleDateChange =this.handleDateChange.bind(this);
+    this.selectUser = this.selectUser.bind(this);
     // this.setDateButton = this.setDateButton.bind(this);
     // this.setDueDate = this.setDueDate.bind(this);
   }
@@ -99,6 +100,33 @@ class TaskForm extends React.Component {
       due_on: date
     });
   }
+
+  selectUser(id) {
+    return e => {
+        e.stopPropagation();
+        const userDropdown = document.getElementById("user-dropdown-menu")
+        userDropdown.className = "user-dropdown-menu-hidden";
+        this.setState({ assigneeId: id });
+    };
+  }
+
+  toggleTaskAssignment() {
+    const { assigneeId } = this.state;
+    const { users } = this.props;
+    const assignee = users[assigneeId];
+    const { full_name, username } = assignee;
+
+    return (
+        <div className="task-show-assign-button" onClick={this.displayUserDropdown}>
+            {/* <AvatarToken user={assignee} size="medium" /> */}
+            <div>
+                <p className="task-show-assign-text1">Assigned to</p>
+                <p className="task-show-assign-text2">{full_name ? full_name : username}</p>
+                <UserListDropdown selectUser={this.selectUser} />
+            </div>
+        </div>
+    );
+}
 
   // setDueDate(){
   //   if (!this.state.due_date){
@@ -209,6 +237,7 @@ class TaskForm extends React.Component {
           <footer className="single-pane-footer">
             <div className="comment-composer">
               <div className="avatar">
+                {this.toggleTaskAssignment()}
               </div>
               <div className="comment-composer-editor">
                 <div className="scrollable">

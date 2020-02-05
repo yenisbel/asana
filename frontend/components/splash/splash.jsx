@@ -7,6 +7,7 @@ class Splash extends React.Component {
     super(props);
     this.dropdownTeamsOpen = this.dropdownTeamsOpen.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleDemoClick = this.handleDemoClick.bind(this);
   }
 
   renderHeader(){
@@ -21,6 +22,15 @@ class Splash extends React.Component {
         </Link>
       );
     }
+  }
+
+  handleDemoClick(e) {
+    e.preventDefault();
+    const user = { username: "Demo", password: "password" }
+    this.props.processForm(user).then((res) => {
+      this.props.closeModal();
+      this.props.history.push(`/teams/${res.team.id}`);
+    });
   }
 
   links() {
@@ -46,6 +56,8 @@ class Splash extends React.Component {
           </section>
           
           <button className="trial" onClick={() => openModal('Sign Up')}>Try for free</button>
+          <button id="demo" className="trial" onClick={this.handleDemoClick}>View Demo</button>
+
         </div>
       </section>
       <div className="splash-section splash-video-banner">

@@ -35,3 +35,4 @@ export const deleteTeam = id => {
     url: `api/teams/${id}`
   });
 };
+

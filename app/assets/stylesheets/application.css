@@ -17,7 +17,7 @@
 
 
   .logo {
-    background-image: url(../images/favicon.ico);
+    /* background-image: url(../images/favicon.ico); */
     background-position: 17px 0;
     background-repeat: no-repeat;
     background-size: 80px 16px;
@@ -79,8 +79,16 @@
     font-size: 14px;
     padding: 0 16px;
     width: 100px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin: 25px 25px;
+  }
+
+  .trial:hover, #demo:hover{
+    background: #635ac7;
+  }
+
+  #demo {
+    background: linear-gradient(to top right, #ff5263 0%, #ff7381 35%, #fcbd01 100%);
+    opacity: 85%;
   }
   
   body {
