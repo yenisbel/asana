@@ -157,6 +157,27 @@
   line-height: 20px;
 }
 
+.task-show-assign-text1 {
+  font-size: 12px;
+  color: #848f99;
+  font-weight: 500;
+  line-height: 16px;
+  margin-left: 10px;
+}
+
+.task-show-assign-text2 {
+  min-width: 70px;
+  max-width: 117px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 18px;
+  margin-left: 10px;
+  white-space: nowrap;
+  color: black;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
 .task-description{
   position: relative;
   width: 100%;

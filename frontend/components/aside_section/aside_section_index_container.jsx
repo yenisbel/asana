@@ -22,7 +22,6 @@ const msp = (state, {match, location}) => {
   }
 
   const teamId = parseInt(match.params.teamId);
-  // debugger
   return {
     projects: Object.values(state.entities.projects),
     members: Object.values(state.entities.members),
@@ -30,7 +29,6 @@ const msp = (state, {match, location}) => {
     teams: Object.values(state.entities.teams),
     teamId,
     projectId,
-    // memberId,
     columnId,
     firstProject: Object.values(state.entities.projects)[0],
     teamName: state.entities.teams[teamId] ? state.entities.teams[teamId].name : ''

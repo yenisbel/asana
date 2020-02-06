@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TeamForm from './team_form';
+import { requestAllUsers } from '../../../actions/user_action';
 import { updateTeam, removeErrors } from '../../../actions/team_actions';
 import { closeModal, openModal } from '../../../actions/modal_actions';
 import { Link } from 'react-router-dom';
@@ -20,7 +21,8 @@ const msp = ({errors, session, entities}) => {
 const mdp = dispatch => {
   return {
     action: (team) => dispatch(updateTeam(team)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    requestAllUsers: (teamId) => dispatch(requestAllUsers(teamId))
   };
 };
 

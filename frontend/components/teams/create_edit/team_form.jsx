@@ -39,6 +39,12 @@ class TeamForm extends React.Component {
   
 
   render() {
+    const { users } = this.props;
+    // let teamMembers = users.map(user => {
+    //   return (
+    //     <WorkspaceMemberIndexItem key={user.id} user={user}/>
+    //   );
+    // });
     return (
       <section className="team-modal">
         <div className="new-edit-header">
@@ -56,6 +62,19 @@ class TeamForm extends React.Component {
                   value={this.state.name}
                   className="create-edit-input-name"
                   placeholder="For example: 'Marketing' or 'Design'"/>
+            </div>
+
+            <div className="create-edit-members">
+              <label htmlFor="team-name" className="label-name">
+                Members
+              </label>
+                <div className="member-container">
+                  <ul className="member-settings">Here go the list ...</ul>
+                </div>
+                
+
+
+
             </div>
 
               <div className="create-edit-button">

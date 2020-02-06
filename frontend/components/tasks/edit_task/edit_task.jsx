@@ -13,8 +13,8 @@ class TaskForm extends React.Component {
       description: props.task.description,
       completed: props.task.completed,
       due_on: props.task.due_on,
-      assigneeId: this.props.currentUserId,
-      
+      assignee_id: this.props.currentUserId,
+      author_id: this.props.currentUserId,   
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -36,7 +36,7 @@ class TaskForm extends React.Component {
   componentDidUpdate(prevProps){
     const { task, column, project, fetchTask, updateTask, teamId } = this.props;
 
-    if (this.needsUpdate(prevProps, this.state)){ // this.state.title
+    if (this.needsUpdate(prevProps, this.state)){ 
       const newTask = Object.assign(task, this.state);
       updateTask(newTask, column.id, project.id, teamId);
     }
@@ -52,7 +52,6 @@ class TaskForm extends React.Component {
     } else if (prevProps.task.completed != state.completed) {
       return true;
     } else if (this.myGetTime(prevDate) != this.myGetTime(date)) {
-      //
       return true;
     } else {
       return false;
@@ -95,57 +94,62 @@ class TaskForm extends React.Component {
   }
 
   handleDateChange(date){
-
     this.setState({
       due_on: date
     });
   }
 
+  displayUserDropdown() {
+    const userDropdown = document.getElementById("user-dropdown-menu")
+    userDropdown.className = "user-dropdown-menu";
+  }
+
   selectUser(id) {
     return e => {
-        e.stopPropagation();
-        const userDropdown = document.getElementById("user-dropdown-menu")
-        userDropdown.className = "user-dropdown-menu-hidden";
-        this.setState({ assigneeId: id });
+      e.preventDefault();
+      e.stopPropagation();
+      const userDropdown = document.getElementById("user-dropdown-menu")
+      userDropdown.className = "user-dropdown-menu-hidden";
+      this.setState({ assignee_id: id });
     };
   }
 
   toggleTaskAssignment() {
-    const { assigneeId } = this.state;
+    const { assignee_id } = this.state;
     const { users } = this.props;
-    const assignee = users[assigneeId];
+    const assignee = users[assignee_id];
     const { full_name, username } = assignee;
 
     return (
         <div className="task-show-assign-button" onClick={this.displayUserDropdown}>
-            {/* <AvatarToken user={assignee} size="medium" /> */}
             <div>
-                <p className="task-show-assign-text1">Assigned to</p>
-                <p className="task-show-assign-text2">{full_name ? full_name : username}</p>
-                <UserListDropdown selectUser={this.selectUser} />
+              <p className="task-show-assign-text1"><i className="fas fa-users"></i> Assigned to:
+                <span className="task-show-assign-text2">{full_name ? full_name : username}</span>
+              </p>
+
+              <UserListDropdown selectUser={this.selectUser} />
             </div>
         </div>
     );
-}
+  }
 
-  // setDueDate(){
-  //   if (!this.state.due_date){
-  //
-  //     this.setState({due_date: this.state.due_date || null);
-  //   }
-  // }
+  toggleTaskAuthored() {
+    const { author_id } = this.state;
+    const { users } = this.props;
+    const author = users[author_id];
+    const { full_name, username } = author;
 
-  // setDateButton(){
-  //
-  //   if (!this.state.due_date){
-  //
-  //   } else {
-  //
-  //     return (
-  //
-  //       );
-  //   }
-  // }
+    return (
+        <div>
+            <div>
+              <p className="task-show-assign-text1"><i className="fas fa-users"></i> Reported by:
+                <span className="task-show-assign-text2">{full_name ? full_name : username}</span>
+              </p>
+            </div>
+        </div>
+    );
+  }
+
 
   render(){
     const { task, column, project, closeModal } = this.props;
@@ -197,6 +201,21 @@ class TaskForm extends React.Component {
                     </div>
                   </div>
                 </div>
+                
+              </div>
+              <div className="task-description-pane">
+                  <section className="task-show-section1">
+                    <div className="task-show-section1-bottom">  
+                      {/* {this.toggleTaskAssignment()} */}
+                    </div>
+                  </section>
+              </div>
+              <div className="task-description-pane">
+                  <section className="task-show-section1">
+                    <div>      
+                      {this.toggleTaskAuthored()}
+                    </div>
+                  </section>
               </div>
               <div className="task-description-pane">
                 <div className="task-description-label">
@@ -234,31 +253,6 @@ class TaskForm extends React.Component {
               </div>
             </div>
           </form>
-          <footer className="single-pane-footer">
-            <div className="comment-composer">
-              <div className="avatar">
-                {this.toggleTaskAssignment()}
-              </div>
-              <div className="comment-composer-editor">
-                <div className="scrollable">
-                  <div className="comment=composer-text-editor-container">
-                    <div className="text-placeholder">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="followers-bar">
-              <label className="followers-label">
-              </label>
-              <div className="followers-list">
-                <div className="removable-avatar">
-                  <div className="footer-avatar">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
         </div>
       </section>
     );

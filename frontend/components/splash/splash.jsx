@@ -35,36 +35,48 @@ class Splash extends React.Component {
 
   links() {
     const { openModal, closeModal } = this.props;
-    return (
-    <div>
-      <header className="splash-main-nav">
-        <a href=""><img src={window.asanaLogoSplash} alt="logo" className="splash-logo-link" /></a>
-        <nav className="login-signup">
-          <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
-          &nbsp;
-          <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
-        </nav>
-      </header>
-      
-      <section className="section-splash">
-        <div className="splash-content">
-          <section className="splash-content-text">
-            <div className="further-div">
-              <h1 className="splash-h1">Less friction. More flow. Give Teams Better Clarity</h1>
-              <p className="splash-text">BlueAsana simplifies team-based work management</p>
+    if (this.props.history.location.pathname == "/") {
+        
+      return (
+        <div>
+    
+          <header className="splash-main-nav">
+            <a href=""><img src={window.asanaLogoSplash} alt="logo" className="splash-logo-link" /></a>
+            <nav className="login-signup">
+              <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
+              &nbsp;
+              <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
+            </nav>
+          </header>
+          
+          <section className="section-splash">
+            <div className="splash-content">
+              <section className="splash-content-text">
+                <div className="further-div">
+                  <h1 className="splash-h1">Less friction. More flow. Give Teams Better Clarity</h1>
+                  <p className="splash-text">BlueAsana simplifies team-based work management</p>
+                </div>
+              </section>
+              
+              <button className="trial" onClick={() => openModal('Sign Up')}>Try for free</button>
+              <button id="demo" className="trial" onClick={this.handleDemoClick}>View Demo</button>
+    
             </div>
           </section>
-          
-          <button className="trial" onClick={() => openModal('Sign Up')}>Try for free</button>
-          <button id="demo" className="trial" onClick={this.handleDemoClick}>View Demo</button>
-
+          <div className="splash-section splash-video-banner">
+            <video src={window.splashVideo} autoPlay loop muted></video>
+          </div>
         </div>
-      </section>
-      <div className="splash-section splash-video-banner">
-        <video src={window.splashVideo} autoPlay loop muted></video>
-      </div>
-    </div>
-  );
+      );
+    } else {
+
+      return (
+        <div>
+        </div>
+      )
+
+    }
+ 
   }
 
   dropdownTeamsOpen() {
@@ -126,7 +138,6 @@ class Splash extends React.Component {
   render() {
     const { currentUser } = this.props;
     return currentUser ? this.greeting() : this.links();
-
   }
 }
 

@@ -11,17 +11,21 @@ import AsideSectionProjectIndex from '../components/aside_section/aside_section_
 
 
 const App = () => {
-
   return (
     <div>
       <Modal />
+      
       <SplashContainer />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+
       <div className="main-ui">
         <ProtectedRoute path="/teams/:teamId" component={AsideSectionProjectIndex} />
         <Switch>
           <ProtectedRoute exact path="/teams/:teamId" component={MainSectionProjectIndex}/>
           <ProtectedRoute exact path="/teams/:teamId/projects/:projectId" component={ProjectShowContainer}/>
         </Switch>
+        
       </div>
     </div>
   );
