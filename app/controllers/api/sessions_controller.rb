@@ -7,6 +7,7 @@ class Api::SessionsController < ApplicationController
     
     if @user
       @team = @user.teams.first
+      @current_team = @team
       log_in(@user)
       render 'api/users/show'
     else
