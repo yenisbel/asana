@@ -6,7 +6,10 @@ import Search from 'react-search';
 class MemberForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.member;
+    // this.state = this.props.member;
+    this.state = {
+      full_name: "",
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -18,6 +21,7 @@ class MemberForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     const member = Object.assign({}, this.state);
     const { teamId } = this.props;
     this.props.action(member, teamId).then(({member}) => {

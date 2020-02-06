@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../actions/user_action';
+import { updateUser, requestUser } from '../../actions/user_action';
 import { closeModal } from '../../actions/modal_actions';
+import AvatarIcon from './avatar_icon'
 
 
 class ProfileSettingsProfile extends React.Component {
@@ -11,6 +12,7 @@ class ProfileSettingsProfile extends React.Component {
         this.state = {
             id: currentUser.id,
             full_name: currentUser.full_name,
+            username: currentUser.username,
             photo_url: currentUser.photo_url,
             changeAvatar: false,
         };
@@ -31,17 +33,13 @@ class ProfileSettingsProfile extends React.Component {
         };
     }
 
+    componentDidMount(){
+        const { currentUserId, requestUser} = this.props;
+        this.props.requestUser(currentUserId);
+    }
+
     render() {
-        const { full_name, photo_url, changeAvatar } = this.state;
-
-        const avatarIcons = {
-            flushed: <i className="fas fa-flushed"></i>,
-            grin: <i className="fas fa-grin"></i>,
-            frown: <i className="fas fa-frown"></i>,
-            smile: <i className="fas fa-smile"></i>,
-        };
-
-        const avatar = avatarIcons.hasOwnProperty(photo_url) ? avatarIcons[photo_url] : <i className="fas fa-user"></i>;
+        const { full_name, photo_url, changeAvatar, currentUserId, requestUser } = this.props;
 
         const avatarRadioInputsClass = changeAvatar ? "" : " hidden";
        
@@ -71,7 +69,8 @@ class ProfileSettingsProfile extends React.Component {
                         <span className="profile-settings-avatar-label">Your avatar</span>
                         <div className="profile-settings-avatar-main">
                             <div className="profile-settings-avatar-main-img-frame" onClick={() => this.setState({ changeAvatar: true })}>
-                                {avatar}
+                                <AvatarIcon photo_url={photo_url} />
+
                             </div>
                             <div className="profile-settings-avatar-main-text">
                                 <div className="profile-settings-avatar-main-text-top">
@@ -87,8 +86,14 @@ class ProfileSettingsProfile extends React.Component {
 
                     <div className="profile-settings-profile-full-name">
                         <label htmlFor="profileSettingsFullName" className="profile-settings-label">Full name</label>
-                        <input type="text" value={full_name ? full_name : ""} id="profileSettingsFullName"
-                            onChange={this.handleChange("full_name")} 
+                        <input type="text" value={currentUser.full_name} id="profileSettingsFullName"
+                            onChange={this.handleChange("profileSettingsFullName")} 
+                            className="profile-settings-input" 
+                            />
+                    </div>
+                    <div className="profile-settings-profile-username">
+                        <label htmlFor="profileSettingsUsername" className="profile-settings-label">Username</label>
+                        <input type="text" value={currentUser.username} id="profileSettingsUsername"
                             className="profile-settings-input" />
                     </div>
 
@@ -103,13 +108,16 @@ const msp = (state, ownProps) => {
     const currentUserId = state.session.currentUserId;
     const currentUser = state.entities.users[currentUserId];
     return {
-      currentUser
+      currentUser,
+      currentUserId
     };
 };
 
 const mdp = dispatch => {
+   
     return {
-        updateUser: user => dispatch(updateUser(user)),
+        requestUser: (currentUserId) => dispatch(requestUser(currentUserId)),
+        updateUser: (currentUser) => dispatch(updateUser(currentUser)),
         closeModal: () => dispatch(closeModal()),
     };
 };

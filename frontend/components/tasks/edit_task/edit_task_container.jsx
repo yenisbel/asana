@@ -9,7 +9,9 @@ const msp =({ session, entities }, ownProps) => {
   const task = entities.tasks[session.currentTaskId] || {};
   const column = entities.columns[task.column_id] || {};
   const teamId = session.currentTeamId;
-  const users = entities.users
+  const users = entities.users;
+  const currentUserId = session.currentUserId;
+  const currentUser = users[currentUserId];
   
   return {
     project: entities.projects[session.currentProjectId],
@@ -17,8 +19,8 @@ const msp =({ session, entities }, ownProps) => {
     users,
     column,
     teamId,
-    currentUser: entities.users[session.currentUserId],
-    currentUserId
+    currentUser,
+    currentUserId,
   }
 }
 

@@ -84,6 +84,7 @@ class TeamIndex extends React.Component {
               <div className="team-button" onClick={() => {
                   logout();
                   closeTeamDropdown();
+                  this.props.history.push(`/`);
                 }}>
                 <span className="team-item">
                   Log Out

@@ -1,7 +1,7 @@
 import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
-export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USER = 'RECEIVE_USER';
 
 
 export const receiveUsers = (users) => {
@@ -18,9 +18,21 @@ export const receiveUser = (user) => {
   };
 };
 
+export const requestUsersByTeam = (teamId) => dispatch => {
+  return UserAPIUtil.fetchUsers(teamId).then(users => (
+    dispatch(receiveUsers(users))
+  ));
+};
+
 export const requestAllUsers = () => dispatch => {
   return UserAPIUtil.fetchUsers().then(users => (
     dispatch(receiveUsers(users))
+  ));
+};
+
+export const requestUser = (id) => dispatch => {
+  return UserAPIUtil.fetchUser(id).then(user => (
+    dispatch(receiveUser(user))
   ));
 };
 

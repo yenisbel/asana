@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectAllUsers } from '../../../reducers/selectors';
 
-
 const UserListDropdown = props => {
     const { users, selectUser } = props;
     const userItems = users.map(user => {
         return (
             <li key={user.id} onClick={selectUser(user.id)}>
                 <p>{user.full_name ? user.full_name : user.username}</p>
-                <p>{user.username}</p>
+                {/* <p>{user.username}</p> */}
             </li>
         );
     });
