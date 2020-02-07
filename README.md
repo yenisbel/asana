@@ -97,7 +97,7 @@ const Modal = props => {
 
 Each user can create multiple categories, as a way to organize Tasks. When creating a task, a user can associated a Task to one of the category that under a Project.
 
-The flow of data from frontend to backend to handle these two distinct scenarios, as shown on the code snippets.
+The flow of data from frontend to backend to handle this scenario, as shown on the code snippets.
 
 Frontend form component:
 ```
@@ -149,16 +149,6 @@ export const createColumn = (column, projectId, teamId) => {
   });
 };
 ```
-
-## Feature Spotlight: Teams
-
-Whenever a user joins a team, a new Membership (representing a row in a joins table in the database) is created. A user may join a team in one of two different ways:
-  * When a user creates a team, a Membership is automatically created for the given user and the newly created team.
-  * When a user invites one or multiple users by entering their Names, those names are sent to the backend, where the MembershipsController retrieves the relevant users from the database and creates a Membership for each one.
-
-The flow of data from frontend to backend to handle these two distinct scenarios, as shown on the code snippets.
-
-Frontend form component:
 
 ## Future Directions
 
