@@ -177,12 +177,12 @@ Frontend form component:
     
 ## References
 
-- Asana Design Documents
-    * [MVP list](mvp.md "facts")
-    * [Schema](schema.md "facts")
-    * [Sample State](sample.md "facts")
-    * [Frontend routes and components](frontend.md "facts")
-    * [Backend routes](backend.md "facts")
+- Asana Design Documents [Wiki](https://github.com/yenisbel/asana/wiki)
+    * [MVP list](https://github.com/yenisbel/asana/wiki/mvp.md)
+    * [Schema](https://github.com/yenisbel/asana/wiki/schema.md)
+    * [Sample State](https://github.com/yenisbel/asana/wiki/sample.md)
+    * [Frontend routes and components](https://github.com/yenisbel/asana/wiki/frontend.md)
+    * [Backend routes](https://github.com/yenisbel/asana/wiki/backend.md)
     
     
 ## Acknowledgements
