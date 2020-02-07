@@ -11,6 +11,7 @@ const msp = ({ session, entities, ui }, ownProps) => {
   return {
     currentUser: entities.users[session.currentUserId],
     sidebar: ui.sidebar,
+    teamId,
     currentProject: (ownProps.location.pathname === `/teams/${teamId}`) ? null : entities.projects[session.currentProjectId],
     teamsDropdown: ui.teamsDropdown
   };

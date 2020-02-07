@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const MemberIndexItem  = ({ teamId, member, openModal, deleteMember }) => {
 
   return (
-    <Link to={`/teams/${teamId}/members/${member.id}`} className="project-index-item">
+    <Link to={`/teams/${teamId}/members/${member.id}`} className="member-index-item">
       <div className="tile-structure">
         <div className="tile-s-child">
-          <div className="tile" style={{ backgroundColor: `#pink` }}>
+          <div className="tile" id="tile-members" style={{ backgroundColor: `#pink` }}>
             <div className="card"></div>
             <button className="body-delete" onClick={(e) => {
                 e.preventDefault();

@@ -14,9 +14,9 @@ const AvatarIcon = props => {
     const avatar = avatarIcons.hasOwnProperty(photo_url) ? avatarIcons[photo_url] : <i className="fas fa-user"></i>;
 
     return (
-        <>
+        <div>
             {avatar}
-        </>
+        </div>
     );
 };
 

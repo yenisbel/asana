@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import TaskForm from './edit_task';
 import { closeModal } from '../../../actions/modal_actions';
 import { updateTask, fetchTask } from '../../../actions/task_actions';
+import { selectAllUsers } from '../../../reducers/selectors';
 
 const msp =({ session, entities }, ownProps) => {
   const task = entities.tasks[session.currentTaskId] || {};

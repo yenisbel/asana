@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router-dom';
 import Search from 'react-search';
+import AutoComplete from "./auto";
+import { requestAllUsers } from "../../../actions/user_action";
 
 
 class MemberForm extends React.Component {
@@ -13,7 +15,9 @@ class MemberForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
+  componentDidMount(){
+    this.props.requestAllUsers()
+  }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value});
@@ -34,20 +38,9 @@ class MemberForm extends React.Component {
     });
   }
 
-  HiItems(items) {
-    console.log(items)
-  }
 
   render() {
-    // const {requestAllUsers} = this.props;
-    // let items = this.props.requestAllUsers;
-    // let items = [
-    //   { id: 0, value: 'ruby' },
-    //   { id: 1, value: 'javascript' },
-    //   { id: 2, value: 'lua' },
-    //   { id: 3, value: 'go' },
-    //   { id: 4, value: 'julia' }
-    // ]
+      const {users} = this.props;
     return (
       <section className="new-edit-modal">
         <div className="new-edit-header">
@@ -62,17 +55,22 @@ class MemberForm extends React.Component {
               <label htmlFor="username" className="label-name">
                 Name
               </label>
-              {/* <div>
-                <Search items={requestAllUsers}
-                        placeholder='Pick your language'
-                        maxSelected={3}
-                        multiple={true}
-                        onItemsChanged={this.HiItems.bind(this)} />
-              </div> */}
                  <input id="username" type="text"
                   value={this.state.username}
                   onChange={this.update('username')}
                   className="create-edit-input-name"/> 
+            </div>
+            <div className="interactive">
+                <ul>
+                  <p>Suggestions name to type... </p>
+                  { Object.values(users).map((member, i) => (
+                    <li key={`member-${i}`} member={member} className="just-suggest">{member.username}</li>
+                    ))
+                  }
+                </ul>
+                  
+                  
+                
             </div>
             <div className="create-edit-button">
                 <input className="create-edit-submit" type="submit" value={this.props.formType}/>
@@ -86,4 +84,3 @@ class MemberForm extends React.Component {
 }
 
 export default withRouter(MemberForm);
-

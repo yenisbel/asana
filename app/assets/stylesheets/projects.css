@@ -105,6 +105,13 @@
     flex-flow: row wrap;
     padding-top: 15px
   }
+
+  .member-index-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #151b26;
+    cursor: not-allowed;
+  }
   
   .tile-structure {
     border-radius: 30px;
@@ -137,8 +144,12 @@
     flex-flow: column;
     position: relative;
   }
+
+  #tile-members {
+    background-color:lightblue;
+  }
   
-  .project-index-item:hover{
+  .project-index-item:hover, .member-index-item:hover{
     background-color: #F8F8F8;
     border-radius: 20px;
   }

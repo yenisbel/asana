@@ -25,6 +25,7 @@ class Api::MembersController < ApplicationController
     def show     
         @member = User.find(params[:id])      
         render :show
+
     end
   
 end

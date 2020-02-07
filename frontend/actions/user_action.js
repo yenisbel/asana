@@ -19,7 +19,7 @@ export const receiveUser = (user) => {
 };
 
 export const requestUsersByTeam = (teamId) => dispatch => {
-  return UserAPIUtil.fetchUsers(teamId).then(users => (
+  return UserAPIUtil.fetchUsersByTeam(teamId).then(users => (
     dispatch(receiveUsers(users))
   ));
 };
@@ -38,7 +38,7 @@ export const requestUser = (id) => dispatch => {
 
 
 export const updateUser = (user) => dispatch => {
-  return UserAPIUtil.updateUser(user).then(user => (
-    dispatch(receiveUser(user))
+  return UserAPIUtil.updateUser(user).then(updatedUser => (
+    dispatch(receiveUser(updatedUser))
   )); 
 };
