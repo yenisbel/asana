@@ -340,3 +340,85 @@
     height: 100%;
   }
   
+  .interactive{
+    display: flex;
+    justify-content: flex-start;
+    font-size: small;
+    padding: 9px;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 4px;
+    border: 1px solid #d5dce0;
+    box-sizing: border-box;
+    font-weight: 400;
+  }
+
+  .just-suggest:read-only{
+    cursor: not-allowed;
+  }
+
+  /* AutoComplete */
+  /* Change autocomplete styles in WebKit */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px rgb(245, 240, 240) inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+  .auto{
+    color: white;
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    width: 191px;
+    height: 200px;
+    border: 2px solid black;
+    margin: 0 20px 20px 20px;
+    padding: 10px;
+    background-color: violet;
+    background-image: url(https://hd.unsplash.com/6/blurred_lines.jpeg);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .auto > *{
+    margin-left: 30px;
+  }
+  
+  .auto > input{
+    margin: 10px 30px 0 30px;
+    border: 1px solid black;
+  }
+  
+  .auto li{
+    cursor: pointer;
+    list-style-type: square;
+  }
+  
+  .auto-enter {
+    opacity: 0.01;
+    transform: translateY(500%);
+  }
+  
+  .auto-enter.auto-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 700ms ease-in, transform 700ms ease-in;
+  }
+  
+  .auto-leave {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .auto-leave.auto-leave-active {
+    opacity: 0.01;
+    transform: translateY(500%);
+    transition: opacity 700ms ease-in, transform 700ms ease-in;
+  }

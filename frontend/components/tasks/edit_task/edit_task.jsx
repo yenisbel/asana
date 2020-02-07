@@ -126,7 +126,8 @@ class TaskForm extends React.Component {
               <p className="task-show-assign-text1"><i className="fas fa-users"></i> Assigned to:
                 <span className="task-show-assign-text2">{full_name ? full_name : username}</span>
               </p>
-
+              <br/>
+              <br/>
               <UserListDropdown selectUser={this.selectUser} />
             </div>
         </div>
@@ -205,8 +206,9 @@ class TaskForm extends React.Component {
               </div>
               <div className="task-description-pane">
                   <section className="task-show-section1">
-                    <div className="task-show-section1-bottom">  
-                      {/* {this.toggleTaskAssignment()} */}
+                    <div className="task-show-section1-bottom">
+{/*                       
+                      {this.toggleTaskAssignment()} */}
                     </div>
                   </section>
               </div>
@@ -253,6 +255,7 @@ class TaskForm extends React.Component {
               </div>
             </div>
           </form>
+          
         </div>
       </section>
     );

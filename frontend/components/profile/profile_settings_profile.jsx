@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser, requestUser } from '../../actions/user_action';
 import { closeModal } from '../../actions/modal_actions';
-import AvatarIcon from './avatar_icon'
+import AvatarIcon from './avatar_icon';
 
 
 class ProfileSettingsProfile extends React.Component {
@@ -12,7 +12,6 @@ class ProfileSettingsProfile extends React.Component {
         this.state = {
             id: currentUser.id,
             full_name: currentUser.full_name,
-            username: currentUser.username,
             photo_url: currentUser.photo_url,
             changeAvatar: false,
         };
@@ -33,14 +32,26 @@ class ProfileSettingsProfile extends React.Component {
         };
     }
 
-    componentDidMount(){
-        const { currentUserId, requestUser} = this.props;
-        this.props.requestUser(currentUserId);
-    }
+    // componentDidMount(){
+    //     const { id, requestUser} = this.props;
+    //     this.props.requestUser(id);
+    // }
 
     render() {
-        const { full_name, photo_url, changeAvatar, currentUserId, requestUser } = this.props;
+        const { full_name, photo_url, changeAvatar, currentUserId, requestUser } = this.state;
 
+        const avatarImages = {
+            kiwi: <i className="fas fa-user"></i>,
+            cat: <i className="fas fa-cat"></i>,
+            dog: <i className="fas fa-dog"></i>,
+            frog: <i className="fas fa-frog"></i>,
+            dove: <i className="fas fa-dove"></i>,
+            dragon: <i className="fas fa-dragon"></i>,
+            fish: <i className="fas fa-fish"></i>,
+            hippo: <i className="fas fa-hippo"></i>,
+        };
+
+        const avatar = avatarImages.hasOwnProperty(photo_url) ? avatarImages[photo_url] : <i className="fas fa-user"></i>;
         const avatarRadioInputsClass = changeAvatar ? "" : " hidden";
        
         const avatarKeys = ["flushed", "grin", "frown", "smile"];
@@ -69,7 +80,8 @@ class ProfileSettingsProfile extends React.Component {
                         <span className="profile-settings-avatar-label">Your avatar</span>
                         <div className="profile-settings-avatar-main">
                             <div className="profile-settings-avatar-main-img-frame" onClick={() => this.setState({ changeAvatar: true })}>
-                                <AvatarIcon photo_url={photo_url} />
+                                {/* <AvatarIcon photo_url={photo_url} /> */}
+                                {avatar}
 
                             </div>
                             <div className="profile-settings-avatar-main-text">
@@ -86,19 +98,16 @@ class ProfileSettingsProfile extends React.Component {
 
                     <div className="profile-settings-profile-full-name">
                         <label htmlFor="profileSettingsFullName" className="profile-settings-label">Full name</label>
-                        <input type="text" value={currentUser.full_name} id="profileSettingsFullName"
-                            onChange={this.handleChange("profileSettingsFullName")} 
+                        <input type="text" value={full_name ? full_name : ""} id="profileSettingsFullName"
+                            onChange={this.handleChange("full_name")} 
                             className="profile-settings-input" 
                             />
                     </div>
-                    <div className="profile-settings-profile-username">
-                        <label htmlFor="profileSettingsUsername" className="profile-settings-label">Username</label>
-                        <input type="text" value={currentUser.username} id="profileSettingsUsername"
-                            className="profile-settings-input" />
-                    </div>
-
+                    
+                    <em>"Username can not be change here, you must provide a new account first"</em>
                     <input type="submit" value="Save Changes" />
                 </form>
+                
             </div>
         );
     }

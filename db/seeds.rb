@@ -14,21 +14,25 @@ Project.destroy_all
 Task.destroy_all
 Column.destroy_all
 
-demo = User.create!({username: 'Demo', password: 'password', full_name: 'Demo User'});
+user1 = User.create(username: 'cindy@abc.com', password: 'password1', full_name: 'Cindy Loop')
+user2 = User.create(username: 'louise@abc', password: 'password1', full_name: 'Louise Loop')
+user3 = User.create(username: 'steve', password: 'password1', full_name: 'Steve Loop')
+user4 = User.create(username: 'dchan', password: 'password1', full_name: 'David Chan')
+
+demo = User.create!({username: 'Demo', password: 'password', full_name: 'Monica S'});
 demoteam = Team.create!({name: 'Demo Team'})
 demomember = Membership.create!(member_id: demo.id, team_id: demoteam.id)
-demoproject = Project.create(name: 'Fundraiser', team_id: demoteam.id, description: 'demoteam for advisor team')
-democolumn1 = Column.create(name: 'In Progress', project_id: demoproject.id)
-democolumn2 = Column.create(name: 'To Do', project_id: demoproject.id)
-demotask1 = Task.create(title: 'Demo Task1', project_id: demoproject.id, author_id: demo.id, column_id: democolumn1.id , description: 'seek speakers for advisor team conference')
-demotask2 = Task.create(title: 'Demo Task2', project_id: demoproject.id, author_id: demo.id, column_id: democolumn2.id , description: 'seek speakers for IT team conference')
-demotask3 = Task.create(title: 'Demo Task3', project_id: demoproject.id, author_id: demo.id, column_id: democolumn1.id , description: 'seek speakers for Invesment Fundraiser event')
+demoproject = Project.create(name: 'Test Automation Development Project', team_id: demoteam.id, description: 'to guide the initial tasks necessary for developing a Software Test Automation project')
+democolumn1 = Column.create(name: 'To Do', project_id: demoproject.id)
+democolumn2 = Column.create(name: 'In Progress', project_id: demoproject.id)
+democolumn3 = Column.create(name: 'Done', project_id: demoproject.id)
+demotask1 = Task.create(title: 'Review Application that will be tested.', project_id: demoproject.id, assignee_id: user1.id , author_id: demo.id, column_id: democolumn1.id , description: 'where data is written and needs to be accessed by automation, what tech stack is needed for automation test environment')
+demotask2 = Task.create(title: 'Create an Automation Team project board', project_id: demoproject.id, assignee_id: user2.id , author_id: demo.id, column_id: democolumn2.id , description: 'to know who is doing what, when and where, and if problems need to be resolved, should be visible to everyone so the team is aware of progress')
+demotask3 = Task.create(title: 'Create a repository to store automation code', project_id: demoproject.id, author_id: demo.id, column_id: democolumn2.id , description: 'Where will the automation code be stored? Would expect this to be in its own repository')
+demotask4 = Task.create(title: 'Configure your automation development workspace app or tool', project_id: demoproject.id, author_id: demo.id, column_id: democolumn3.id , description: 'to build automation scripts will need to be configure and setup to be able to check in and out code from the repository')
 
 
-user1 = User.create(username: 'test1', password: 'password1', full_name: 'Cindy Loop')
-user2 = User.create(username: 'user@abc.com', password: 'password1', full_name: 'Louise Loop')
-user3 = User.create(username: 'test3', password: 'password1', full_name: 'Steve Loop')
-user4 = User.create(username: 'test4', password: 'password1', full_name: 'David Chan')
+
 # require 'faker'
 
 # user1 = User.create(email: Faker::Internet.email, password: 'password')

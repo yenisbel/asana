@@ -52,7 +52,7 @@ class NewTask extends React.Component {
               <div className={(creatingT && (currentColumn.id === columnId)) ? "task-properties-title" : "properties-title-none"}>
                 <form className={(creatingT && (currentColumn.id === columnId)) ? "new-task-form" : "new-task-form-none"} onKeyPress={this.handleSubmit}>
                   <textarea type="text" className="new-task-title"
-                    rows="1"
+                    rows="1" placeholder="Task title..."
                     onChange={this.update()}
                     value={this.state.title}
                     ref={c => this._textarea = c}
