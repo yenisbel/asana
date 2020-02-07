@@ -25,10 +25,10 @@ Teams are the main feature, actions on this model are create, edit, and delete t
 
 ### Projects
 
-Projects is other important feature, users can create projects, but they can only edit, and delete a project if they members to the team that holds the project.
+Projects is other important feature, users can create projects, but they can only edit, and delete a project if they are members to the team that holds the project.
 
 
-### Columns aka Categories
+### Columns (aka Categories)
 
 Categories help organize tasks in different topics, like To Do, In Progress, Done. For that reason this feature is under each project's show page. Actions permited are create and edit a column whenever the user, but can only delete a column if the column has no tasks. 
 
@@ -39,7 +39,7 @@ Tasks as well another feature of the application. Actions inlcuded here are the 
 ## Future Directions
 
 * Enhancements to existing features:
-    * Refactor code to improve user experience when navigating around the site.
+    * Refactor code to improve the user experience when navigating around the site.
     * Add drag-and-drop functionality to reassign tasks to sections.
     * Users can assign due dates to projects as well.
     * Add autosave using a debounce algorithm to limit API requests
