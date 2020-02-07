@@ -63,20 +63,6 @@ class TeamForm extends React.Component {
                   className="create-edit-input-name"
                   placeholder="For example: 'Marketing' or 'Design'"/>
             </div>
-
-            <div className="create-edit-members">
-              <label htmlFor="team-name" className="label-name">
-                Members
-              </label>
-                <div className="member-container">
-                  <ul className="member-settings">Here go the list ...</ul>
-                </div>
-                
-
-
-
-            </div>
-
               <div className="create-edit-button">
                 <input className="create-edit-submit" type="submit" value={this.props.formType}/>
               </div>
