@@ -1,4 +1,4 @@
-# Asana
+# BlueAsana
 
 BlueAsana is a web application based on Asana, a very popular tool for project and task management. BlueAsana was built using a PostgreSQL database, Ruby on Rails on the backend, and React.js on the frontend, using Redux to manage state.
 
@@ -58,3 +58,8 @@ Tasks as well another feature of the application. Actions inlcuded here are the 
     * [Sample State](sample.md "facts")
     * [Frontend routes and components](frontend.md "facts")
     * [Backend routes](backend.md "facts")
+    
+    
+## Acknowledgements
+
+Special thanks to the teachers of App Academy!
