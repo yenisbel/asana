@@ -97,7 +97,7 @@ const Modal = props => {
 
 Each user can create multiple categories, as a way to organize Tasks. When creating a task, a user can associated a Task to one of the category that under a Project.
 
-The flow of data from frontend to backend to handle these two distinct scenarios, as shown on the code snippets.
+The flow of data from frontend to backend to handle this scenario, as shown on the code snippets.
 
 Frontend form component:
 ```
