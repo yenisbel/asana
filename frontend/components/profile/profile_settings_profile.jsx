@@ -32,26 +32,8 @@ class ProfileSettingsProfile extends React.Component {
         };
     }
 
-    // componentDidMount(){
-    //     const { id, requestUser} = this.props;
-    //     this.props.requestUser(id);
-    // }
-
     render() {
         const { full_name, photo_url, changeAvatar, currentUserId, requestUser } = this.state;
-
-        const avatarImages = {
-            kiwi: <i className="fas fa-user"></i>,
-            cat: <i className="fas fa-cat"></i>,
-            dog: <i className="fas fa-dog"></i>,
-            frog: <i className="fas fa-frog"></i>,
-            dove: <i className="fas fa-dove"></i>,
-            dragon: <i className="fas fa-dragon"></i>,
-            fish: <i className="fas fa-fish"></i>,
-            hippo: <i className="fas fa-hippo"></i>,
-        };
-
-        const avatar = avatarImages.hasOwnProperty(photo_url) ? avatarImages[photo_url] : <i className="fas fa-user"></i>;
         const avatarRadioInputsClass = changeAvatar ? "" : " hidden";
        
         const avatarKeys = ["flushed", "grin", "frown", "smile"];
@@ -80,8 +62,8 @@ class ProfileSettingsProfile extends React.Component {
                         <span className="profile-settings-avatar-label">Your avatar</span>
                         <div className="profile-settings-avatar-main">
                             <div className="profile-settings-avatar-main-img-frame" onClick={() => this.setState({ changeAvatar: true })}>
-                                {/* <AvatarIcon photo_url={photo_url} /> */}
-                                {avatar}
+                                <AvatarIcon photo_url={photo_url} />
+                                {/* {avatar} */}
 
                             </div>
                             <div className="profile-settings-avatar-main-text">
@@ -104,7 +86,7 @@ class ProfileSettingsProfile extends React.Component {
                             />
                     </div>
                     
-                    <em>"Username can not be change here, you must provide a new account first"</em>
+                    <em className="subnote">"Username can not be change here, you must provide a new account first"</em>
                     <input type="submit" value="Save Changes" />
                 </form>
                 

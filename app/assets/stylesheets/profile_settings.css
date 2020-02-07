@@ -1,4 +1,4 @@
-/* PROFILE SETTINGS: TABS */
+/* PROFILE SETTINGS:*/
 
 .profile-settings-container {
     width: 702px;
@@ -237,8 +237,10 @@
     background-color: #008ce3;
 }
 
-
-/* PROFILE SETTINGS: ACCOUNT */
+.subnote {
+    font-size: xx-small;
+    font-style: oblique;
+}
 
 .profile-settings-account-container {
     padding: 15px 30px;
