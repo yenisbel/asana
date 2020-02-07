@@ -4,7 +4,7 @@ BlueAsana is a web application based on Asana, a very popular tool for project a
 
 [Live Site](http://blueasana.herokuapp.com/#/)
 
-![screencast 2020-02-06 23-05-45](https://user-images.githubusercontent.com/7420659/74040202-2499e980-49bb-11ea-951f-41a93569e1f4.gif)
+![screencast 2020-02-07 10-10-41](https://user-images.githubusercontent.com/7420659/74055165-66388d80-49d7-11ea-8eae-4eb8e130f834.gif)
 
 BlueAsana Technology Stack
 
@@ -21,12 +21,16 @@ BlueAsana Technology Stack
 
 ### Teams
 
-Teams are the main feature, actions on this model are create, edit, and delete teams.
+Teams are the main feature, actions on this model are create, edit, and delete teams.A newly user will have a membership association under a First Team that can remove from there later on after has another Teams.
 
 ### Projects
 
 Projects is other important feature, users can create projects, but they can only edit, and delete a project if they are members to the team that holds the project.
 
+### Members
+A user may join a team in one of two different ways:
+  * When a user creates a team, a Membership is automatically created for the given user and the newly created team.
+  * When a user can add one or multiple users by entering their Names, those names are sent to the backend, where the MembershipsController retrieves the relevant users from the database and creates a Membership for each one.
 
 ### Columns (aka Categories)
 
@@ -95,7 +99,56 @@ Each user can create multiple categories, as a way to organize Tasks. When creat
 
 The flow of data from frontend to backend to handle these two distinct scenarios, as shown on the code snippets.
 
+Frontend form component:
+```
+  handleSubmit(e) {
+    const { projectId, teamId } = this.props;
+    e.preventDefault();
+    const column = Object.assign({}, this.state);
+    if (e.key === 'Enter'){
+      if (this.state.name === ''){
+        this.props.deselectNewColumn();
+      } else {
+        this.props.createColumn(column, projectId, teamId).then(() => this.setState({ name: ''}));
+      }
+    } else {
+      this.update()(e);
+    }
+  }
 
+  update() {
+    return e => {
+      if (e.key === undefined){
+        return this.setState({ name: this.state.name.slice(0, -1)});
+      } else {
+        return this.setState({ name: this.state.name + e.key});
+      }
+    };
+  }
+
+```
+
+Thunk action creator, asynchronously sends AJAX request to backend:
+```
+export const createColumn = (column, projectId, teamId) => dispatch => {
+
+  return ColumnAPIUtil.createColumn(column, projectId, teamId).then(res => {
+    return dispatch(receiveColumn(res));
+  });
+};
+```
+
+AJAX request that sends project and column information to the backend:
+```
+export const createColumn = (column, projectId, teamId) => {
+
+  return $.ajax({
+    method: 'POST',
+    url: `api/teams/${teamId}/projects/${projectId}/columns/`,
+    data: { column }
+  });
+};
+```
 
 ## Feature Spotlight: Teams
 
